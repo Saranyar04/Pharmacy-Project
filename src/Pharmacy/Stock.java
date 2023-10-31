@@ -14,5 +14,5 @@ public class Stock {
         this.location = location;
         this.batch_no = batch_no;
     }
-    public int getStocknumber() {return(0);}
+    public void getStocknumber() {}
 }
