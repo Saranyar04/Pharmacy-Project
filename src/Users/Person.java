@@ -1,14 +1,14 @@
 //package
 
-package Users;
+package users;
 import java.util.Date;
 
 public class Person {
-    public String legal_name;
+
+    public String legalName;
     public String gender;
-    String date_of_birth;
-    public int phone_no;
+    public String dateOfBirth;
+    public int phoneNo;
     public String address;
     public String email;
-    
 }

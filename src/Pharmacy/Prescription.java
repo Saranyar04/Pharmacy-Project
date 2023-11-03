@@ -1,23 +1,25 @@
-//Package
+//package
 
-package Pharmacy;
+package pharmacy;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Prescription {
-    int prescription_no;
-    List<String> med_list  = new ArrayList<> ();
-    int quantity;
-    String prescription_dosage;
-    String doctor_name;
-    String customer_id;
-    public void addPrescription(int prescription_no, List<String> med_list, int quantity, String prescription_dosage, String doctor_name, String customer_id) {
-        this.prescription_no = prescription_no;
-        this.med_list = med_list;
+
+    public int prescriptionNo;
+    public List<String> medList  = new ArrayList<> ();
+    public int quantity;
+    public String prescriptionDosage;
+    public String doctorName;
+    public String customerId;
+
+    public Prescription(int prescriptionNo, List<String> medList, int quantity, String prescriptionDosage, String doctorName, String customerId) {
+        this.prescriptionNo = prescriptionNo;
+        this.medList = medList;
         this.quantity = quantity;
-        this.prescription_dosage = prescription_dosage;
-        this.doctor_name = doctor_name;
-        this.customer_id = customer_id;
+        this.prescriptionDosage = prescriptionDosage;
+        this.doctorName = doctorName;
+        this.customerId = customerId;
     }
 
 }
