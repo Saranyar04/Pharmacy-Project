@@ -46,11 +46,11 @@ public class Doctor extends Person {
         @Override
         public String toString() {
             return "Doctor " +
-                    "Name : " + getLegalName ( ) + '\'' +
-                    ", Gender : " + getGender ( ) + '\'' +
-                    ", Date of Birth : " + getdateOfBirth ( ) + '\'' +
+                    "Name : " + getLegalName ( ) +
+                    ", Gender : " + getGender ( ) +
+                    ", Date of Birth : " + getdateOfBirth ( ) +
                     ", Phone No : " + getPhoneNo ( ) +
-                    ", Address : " + getaddress ( ) + '\'' +
+                    ", Address : " + getaddress ( ) +
                     ", Email : " + getEmail ( ) +
                     ", Type : " + getDoctorType ( );
         }

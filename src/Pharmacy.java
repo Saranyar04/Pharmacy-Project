@@ -47,6 +47,5 @@ public class Pharmacy {
         s1.receiptTotal = rTotal;
         s1.insurancePays = insurancePays;
         s1.customerOwes = cOwes;
-        saleList.add(s1);
     }
 }

@@ -16,7 +16,19 @@ public class Pharmacist extends Employee {
         this.salary = salary;
         this.userName = userName;
         this.password = password;
-        this.pharmaId = pharmaId;
+        this.pharmaId = PharmaId;
         this.medicalLicenceNo = medicalLicenceNumber;
+    }
+
+    public boolean equals(Pharmacist object) {
+        if(this.medicalLicenceNo.equals (object.medicalLicenceNo))
+            return true;
+        else
+            return false;
+    }
+
+    public int hashCode(String medicalLicenceNo) {
+        int i = Integer.parseInt(this.medicalLicenceNo);
+        return i;
     }
 }

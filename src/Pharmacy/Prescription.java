@@ -12,4 +12,12 @@ public class Prescription {
     public String prescriptionDosage;
     public String doctorName;
     public String customerId;
+    public Prescription(int prescriptionNo, List<String> medList, int quantity, String prescriptionDosage, String doctorName, String customerId) {
+        this.prescriptionNo = prescriptionNo;
+        this.medList = medList;
+        this.quantity = quantity;
+        this.prescriptionDosage = prescriptionDosage;
+        this.doctorName = doctorName;
+        this.customerId = customerId;
+    }
 }
