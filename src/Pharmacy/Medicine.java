@@ -3,7 +3,6 @@
 package pharmacy;
 
 public class Medicine {
-
     public String medName;
     public String medType;
     public String medCompany;

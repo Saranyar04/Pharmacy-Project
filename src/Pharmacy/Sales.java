@@ -4,10 +4,13 @@ package pharmacy;
 
 public class Sales {
 
-    String receiptNumber;
-    String receiptDate;
-    float receiptTotal;
-    float insurancePays;
-    float customerOwes;
+    public String receiptNumber;
+    public String receiptDate;
+    public String[] listOfItems;
+    public String customerName;
+    public String salesPerson;
+    public float receiptTotal;
+    public float insurancePays;
+    public float customerOwes;
     }
 
