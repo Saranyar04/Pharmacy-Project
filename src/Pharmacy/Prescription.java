@@ -1,23 +1,54 @@
-//package
-
 package pharmacy;
+
+import users.Customer;
+import users.Doctor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Prescription {
 
-    public int prescriptionNo;
-    public List<String> medList  = new ArrayList<> ();
-    public int quantity;
-    public String prescriptionDosage;
-    public String doctorName;
-    public String customerId;
-    public Prescription(int prescriptionNo, List<String> medList, int quantity, String prescriptionDosage, String doctorName, String customerId) {
-        this.prescriptionNo = prescriptionNo;
+    private final int number;
+    private List<Medicine> medList  = new ArrayList<Medicine>();
+    private final int quantity;
+    private final String prescriptionDosage;
+    private Doctor doctor;
+    private final Customer customer;
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Prescription(int number, List<Medicine> medList, int quantity, String prescriptionDosage, Doctor doctor, Customer customer) {
+        this.number = number;
         this.medList = medList;
         this.quantity = quantity;
         this.prescriptionDosage = prescriptionDosage;
-        this.doctorName = doctorName;
-        this.customerId = customerId;
+        this.doctor = doctor;
+        this.customer = customer;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass( ) != o.getClass( ))
+            return false;
+        Prescription that = (Prescription) o;
+        return number == that.number && quantity == that.quantity && Objects.equals(medList, that.medList) && Objects.equals(prescriptionDosage, that.prescriptionDosage) && Objects.equals (doctor, that.doctor) && Objects.equals (customer, that.customer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, medList, quantity, prescriptionDosage, doctor, customer);
     }
 }

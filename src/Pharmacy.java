@@ -1,51 +1,62 @@
-//package
-
-import pharmacy.OverTheCounter;
-import pharmacy.PrescriptionDrug;
-import pharmacy.Sales;
-import users.Customer;
-import users.Doctor;
-import users.Pharmacist;
-import users.SalesPerson;
-
+import pharmacy.*;
+import users.*;
 import java.util.ArrayList;
 
 public class Pharmacy {
 
-    public ArrayList<Sales> saleList;
+    private  ArrayList<Sale> saleList;
+    private ArrayList<Doctor> doctorList;
+    private ArrayList<Pharmacist> pharmacistList;
+    private ArrayList<SalesPerson> salesPersonList;
+    private ArrayList<OverTheCounter> otcList;
+    private ArrayList<Prescription> prescriptionList;
+    private ArrayList<Customer> customerList;
+    private ArrayList<PrescriptionDrug> drugList;
 
-    public void addOtc(String mName, String mType, String mCompany, String mDescription, float mPrice, String otcId, String mUses) {
-        OverTheCounter otc = new OverTheCounter ( );
-        otc.medName = mName;
-        otc.medType = mType;
-        otc.medCompany = mCompany;
-        otc.medDescription = mDescription;
-        otc.medPrice = mPrice;
-        otc.otcId = otcId;
-        otc.uses = mUses;
+    public Pharmacy () {
+        saleList = new ArrayList<Sale>();
+        doctorList = new ArrayList<Doctor>();
+        pharmacistList = new ArrayList<Pharmacist>();
+        salesPersonList = new ArrayList<SalesPerson>();
+        otcList = new ArrayList<OverTheCounter>();
+        prescriptionList = new ArrayList<Prescription>();
+        customerList = new ArrayList<Customer>();
+        drugList = new ArrayList<PrescriptionDrug>();
     }
 
-    public void addPrescriptiondrug(String mName, String mType, String mCompany, String mDescription, float mPrice, String mId, String mDosage, String sInstruction) {
-        PrescriptionDrug p1 = new PrescriptionDrug ( );
-        p1.medName = mName;
-        p1.medType = mType;
-        p1.medCompany = mCompany;
-        p1.medDescription = mDescription;
-        p1.medPrice = mPrice;
-        p1.medId = mId;
-        p1.dosage = mDosage;
-        p1.specialInstruction = sInstruction;
+    public void addOtc(OverTheCounter overTheCounter) {
+        otcList.add(overTheCounter);
     }
 
-    public void addSales(String rNumber, String rDate, String[] lItem, String cName, String sName, float rTotal, float insurancePays, float cOwes) {
-        Sales s1 = new Sales ( );
-        s1.receiptNumber = rNumber;
-        s1.receiptDate = rDate;
-        s1.listOfItems = lItem;
-        s1.customerName = cName;
-        s1.salesPerson = sName;
-        s1.receiptTotal = rTotal;
-        s1.insurancePays = insurancePays;
-        s1.customerOwes = cOwes;
+    public void addSale(Sale sale) {
+        saleList.add(sale);
+    }
+
+    public void addDoctor(Doctor doctor) {
+        doctorList.add(doctor);
+    }
+
+    public void addPharmacist(Pharmacist pharmacist) {
+        pharmacistList.add(pharmacist);
+    }
+
+    public void addSalesPerson(SalesPerson salesPerson) {
+        salesPersonList.add(salesPerson);
+    }
+
+    public void addPrescription(Prescription prescription) {
+        prescriptionList.add(prescription);
+    }
+
+    public void addCustomer(Customer customer) {
+        customerList.add(customer);
+    }
+
+    public void addPrescriptionDrug(PrescriptionDrug prescriptionDrug) {
+        drugList.add(prescriptionDrug);
+    }
+
+    public void setOtcList (ArrayList<OverTheCounter> otcList) {
+        this.otcList = otcList;
     }
 }
