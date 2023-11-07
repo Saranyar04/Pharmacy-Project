@@ -8,18 +8,18 @@ import java.util.Objects;
 
 public class Prescription {
 
-    private final int number;
-    private List<Medicine> medList  = new ArrayList<Medicine>();
-    private final int quantity;
-    private final String prescriptionDosage;
+    private final int Number;
+    private List<Medicine> Medicine_List  = new ArrayList<Medicine>();
+    private final int Quantity;
+    private final String Prescription_Dosage;
     private Doctor doctor;
-    private final Customer customer;
+    private Customer customer;
 
-    public Prescription(int number, List<Medicine> medList, int quantity, String prescriptionDosage, Doctor doctor, Customer customer) {
-        this.number = number;
-        this.medList = medList;
-        this.quantity = quantity;
-        this.prescriptionDosage = prescriptionDosage;
+    public Prescription(int number, List<Medicine> medList, int Quantity, String Prescription_Dosage, Doctor doctor, Customer customer) {
+        this.Number = number;
+        this.Medicine_List = medList;
+        this.Quantity = Quantity;
+        this.Prescription_Dosage = Prescription_Dosage;
         this.doctor = doctor;
         this.customer = customer;
     }
@@ -44,11 +44,11 @@ public class Prescription {
         if (o == null || getClass( ) != o.getClass( ))
             return false;
         Prescription that = (Prescription) o;
-        return number == that.number && quantity == that.quantity && Objects.equals(medList, that.medList) && Objects.equals(prescriptionDosage, that.prescriptionDosage) && Objects.equals (doctor, that.doctor) && Objects.equals (customer, that.customer);
+        return Number == that.Number && Quantity == that.Quantity && Objects.equals(Medicine_List, that.Medicine_List) && Objects.equals(Prescription_Dosage, that.Prescription_Dosage) && Objects.equals (doctor, that.doctor) && Objects.equals (customer, that.customer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, medList, quantity, prescriptionDosage, doctor, customer);
+        return Objects.hash(Number, Medicine_List, Quantity, Prescription_Dosage, doctor, customer);
     }
 }

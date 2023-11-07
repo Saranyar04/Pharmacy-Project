@@ -6,7 +6,7 @@ public abstract class Employee extends Person {
     private float salary;
     private String employeeId;
 
-    public Employee (String legalName, String gender, String dateOfBirth, String phoneNo, String address, String email, String designation, float salary, String employeeId) {
+    public Employee(String legalName, String gender, String dateOfBirth, String phoneNo, String address, String email, String designation, float salary, String employeeId) {
         super (legalName, gender, dateOfBirth, phoneNo, address, email);
         this.designation = designation;
         this.salary = salary;
