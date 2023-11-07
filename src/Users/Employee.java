@@ -14,7 +14,6 @@ public abstract class Employee extends Person {
     }
 
     public String getDesignation() {
-
         return designation;
     }
 
