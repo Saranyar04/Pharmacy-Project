@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Pharmacy {
 
-    final String name = "Faid Pharmacy";
+    protected String name = "Faid Pharmacy";
     private List<Sale> saleList =  new ArrayList<>();
     private List<Doctor> doctorList =  new ArrayList<>();
     private List<Pharmacist> pharmacistList =  new ArrayList<>();
