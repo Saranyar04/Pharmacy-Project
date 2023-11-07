@@ -1,16 +1,18 @@
 package users;
 
+import static java.lang.Math.random;
+
 public abstract class Employee extends Person {
 
     private String designation;
     private float salary;
-    private String employeeId;
+    private double employeeId;
 
     public Employee(String legalName, String gender, String dateOfBirth, String phoneNo, String address, String email, String designation, float salary, String employeeId) {
         super (legalName, gender, dateOfBirth, phoneNo, address, email);
         this.designation = designation;
         this.salary = salary;
-        this.employeeId = employeeId;
+        this.employeeId =  random();
     }
 
     public String getDesignation() {
@@ -21,10 +23,6 @@ public abstract class Employee extends Person {
         return salary;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
     public void setDesignation(String designation) {
         this.designation = designation;
     }
@@ -33,7 +31,11 @@ public abstract class Employee extends Person {
         this.salary = salary;
     }
 
-    public void setEmployeeId(String employeeId) {
+    public double getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(double employeeId) {
         this.employeeId = employeeId;
     }
 }

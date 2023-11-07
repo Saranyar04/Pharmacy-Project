@@ -5,7 +5,7 @@ public class OverTheCounter extends Medicine {
     private String otcId;
     private String uses;
 
-    public OverTheCounter(String name, String type, String company, String description, double price, String otcId, String uses) {
+    public OverTheCounter (String name, String type, String company, String description, double price, String otcId, String uses) {
         super (name, type, company, description, price);
         this.otcId = otcId;
         this.uses = uses;

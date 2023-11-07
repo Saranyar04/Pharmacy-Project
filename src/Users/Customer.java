@@ -2,21 +2,33 @@ package users;
 
 public class Customer extends Person {
 
-    private String customerId;
+    private double customerId;
     private String insurance;
-    private String doctorName;
-    public Customer(String legalName, String gender, String dateOfBirth, String phoneNo, String address, String email, String customerId, String insurance, String doctorName) {
+    private Doctor doctor;
+
+    public Customer(String legalName, String gender, String dateOfBirth, String phoneNo, String address, String email, String insurance, Doctor doctor) {
         super(legalName, gender, dateOfBirth, phoneNo, address, email);
-        this.customerId = customerId;
+        this.customerId = Math.random();
         this.insurance = insurance;
-        this.doctorName = doctorName;
+        this.doctor = doctor;
     }
 
-    public String getCustomerId() {
+    @Override
+    public String toString() {
+        return "Customer{" + " Legal Name='" + super.getLegalName()
+                + " Gender='" + super.getGender()
+                + " Date of Birth='" + super.getDateOfBirth()
+                + " Phone No='" + super.getPhoneNo()
+                + " Address=" + super.getAddress() +
+                " Customer Id=" + customerId +
+                '}';
+    }
+
+    public double getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(double customerId) {
         this.customerId = customerId;
     }
 
@@ -28,24 +40,11 @@ public class Customer extends Person {
         this.insurance = insurance;
     }
 
-    public String getDoctorName() {
-        return doctorName;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" + "Legal Name='" + super.getLegalName()
-                + "Gender='" + super.getGender()
-                + "Date of Birth='" + super.getDateOfBirth()
-                + "Phone No='" + super.getPhoneNo()
-                + "Address=" + super.getAddress() +
-                "customerId='" + customerId + '\'' +
-                ", insurance='" + insurance + '\'' +
-                ", doctorName='" + doctorName + '\'' +
-                '}';
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 }

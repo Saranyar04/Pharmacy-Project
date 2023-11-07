@@ -1,29 +1,19 @@
 import pharmacy.*;
 import users.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Pharmacy {
 
-    public final String name = "Faid Pharmacy";
-    private  ArrayList<Sale> saleList;
-    private ArrayList<Doctor> doctorList;
-    private ArrayList<Pharmacist> pharmacistList;
-    private ArrayList<SalesPerson> salesPersonList;
-    private ArrayList<OverTheCounter> otcList;
-    private ArrayList<Prescription> prescriptionList;
-    private ArrayList<Customer> customerList;
-    private ArrayList<PrescriptionDrug> drugList;
-
-    public Pharmacy() {
-        saleList = new ArrayList<Sale>();
-        doctorList = new ArrayList<Doctor>();
-        pharmacistList = new ArrayList<Pharmacist>();
-        salesPersonList = new ArrayList<SalesPerson>();
-        otcList = new ArrayList<OverTheCounter>();
-        prescriptionList = new ArrayList<Prescription>();
-        customerList = new ArrayList<Customer>();
-        drugList = new ArrayList<PrescriptionDrug>();
-    }
+    final String name = "Faid Pharmacy";
+    private List<Sale> saleList =  new ArrayList<>();
+    private List<Doctor> doctorList =  new ArrayList<>();
+    private List<Pharmacist> pharmacistList =  new ArrayList<>();
+    private List<SalesPerson> salesPersonList =  new ArrayList<>();
+    private List<OverTheCounter> otcList =  new ArrayList<>();
+    private List<Prescription> prescriptionList =  new ArrayList<>();
+    private List<Customer> customerList =  new ArrayList<>();
+    private List<PrescriptionDrug> drugList =  new ArrayList<>();
 
     public void addOtc(OverTheCounter overTheCounter) {
         otcList.add(overTheCounter);

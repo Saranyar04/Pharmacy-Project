@@ -8,7 +8,7 @@ public class Sale {
 
     private String number;
     private String date;
-    public List<Medicine> listOfItems;
+    private List<Medicine> listOfItems;
     private Customer customer;
     private SalesPerson salesPerson;
     private float receiptTotal;
