@@ -14,7 +14,7 @@ public class Pharmacy {
     private ArrayList<Customer> customerList;
     private ArrayList<PrescriptionDrug> drugList;
 
-    public Pharmacy () {
+    public Pharmacy() {
         saleList = new ArrayList<Sale>();
         doctorList = new ArrayList<Doctor>();
         pharmacistList = new ArrayList<Pharmacist>();
