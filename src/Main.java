@@ -10,13 +10,14 @@ import java.util.*;
 public class Main {
     public static void main (String[] args) {
         Pharmacy p1 = new Pharmacy();
+        System.out.println(p1.name);
         OverTheCounter overTheCounter = new OverTheCounter("Tylenol", "generic", "MCD laboratories", "Generic for age 13+", 23.33, "TY0123", "For common cold");
         p1.addOtc(overTheCounter);
 
         List<Medicine> medicines = new ArrayList<Medicine>();
         medicines.add(new Medicine("Tylenol", "Generic", "MDC laboratories", "Generic foe age 13+", 23));
         medicines.add(new Medicine("Paracetamol", "Generic", "TI lab", "for ages 15+", 13));
-        Customer c1 = new Customer ("Lilly","Female", "04/11/2020", "4132246731", "23 Rivera Dr, Main St, NewJersey", "lilly@gmail.com", "C56738", "Aetna", "Seegol");
+        Customer c1 = new Customer("Lilly","Female", "04/11/2020", "4132246731", "23 Rivera Dr, Main St, NewJersey", "lilly@gmail.com", "C56738", "Aetna", "Seegol");
         Doctor d1 = new Doctor("Seegol", "Male", "3/12/1989", "4132458798", "61 Riverview Ave, New Jersy", "Seegol@yahoo.com", "Surgeon");
         Prescription prescription = new Prescription(34512, medicines, 2,"Morning and Night after food", d1, c1);
         p1.addPrescription(prescription);
@@ -27,8 +28,8 @@ public class Main {
         Customer cust = new Customer("Lilly", "Female", "04/11/2020", "4132458798","23 River Dr, New Jersey", "Lilly@gmail.com", "C56738", "Aetna", "Seegol");
         SalesPerson sPerson = new SalesPerson("Johnny","Female","11/07/2023", "4132456789", "45 Trients Rd, New Jersey", "Johny@gmail.com", "Associate", 3000, "Emp54637", "Morning");
         Sale sale = new Sale("23464", "11/04/2023", med, cust, sPerson, 53,23, 30);
-        PrescriptionDrug prescriptionDrug = new PrescriptionDrug ("Oxycodine", "Pain Relever", "TB Technologies", "Sevier pain relief", 33.3, "MD2234", "Morning and Night after food", "Should not be had without food");
-        p1.addPrescriptionDrug (prescriptionDrug);
+        PrescriptionDrug prescriptionDrug = new PrescriptionDrug("Oxycodine", "Pain Relever", "TB Technologies", "Sevier pain relief", 33.3, "MD2234", "Morning and Night after food", "Should not be had without food");
+        p1.addPrescriptionDrug(prescriptionDrug);
 
         Customer customer = new Customer("Lilly", "Female", "04/11/2020", "4132246731", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", "C56738", "Aetna", "Seegol");
         p1.addCustomer(customer);

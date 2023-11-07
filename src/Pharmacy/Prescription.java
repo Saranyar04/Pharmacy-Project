@@ -15,6 +15,15 @@ public class Prescription {
     private Doctor doctor;
     private final Customer customer;
 
+    public Prescription(int number, List<Medicine> medList, int quantity, String prescriptionDosage, Doctor doctor, Customer customer) {
+        this.number = number;
+        this.medList = medList;
+        this.quantity = quantity;
+        this.prescriptionDosage = prescriptionDosage;
+        this.doctor = doctor;
+        this.customer = customer;
+    }
+
     public Doctor getDoctor() {
         return doctor;
     }
@@ -25,15 +34,6 @@ public class Prescription {
 
     public Customer getCustomer() {
         return customer;
-    }
-
-    public Prescription(int number, List<Medicine> medList, int quantity, String prescriptionDosage, Doctor doctor, Customer customer) {
-        this.number = number;
-        this.medList = medList;
-        this.quantity = quantity;
-        this.prescriptionDosage = prescriptionDosage;
-        this.doctor = doctor;
-        this.customer = customer;
     }
 
     @Override

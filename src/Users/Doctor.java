@@ -20,12 +20,12 @@ public class Doctor extends Person {
 
     @Override
     public String toString () {
-        return "Doctor{" + "Legal Name='" + super.getLegalName ()
-                + "Gender='" + super.getGender ()
-                + "Date of Birth='" + super.getDateOfBirth ()
-                + "Phone No='" + super.getPhoneNo ()
-                + "Address=" + super.getAddress () +
-                "doctorType='" + doctorType + '\'' +
+        return "Doctor{" + "Legal Name='" + super.getLegalName()
+                + "Gender='" + super.getGender()
+                + "Date of Birth='" + super.getDateOfBirth()
+                + "Phone No='" + super.getPhoneNo()
+                + "Address=" + super.getAddress() +
+                "doctorType='" + doctorType +
                 '}';
     }
 }

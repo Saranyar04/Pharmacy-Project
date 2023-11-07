@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Pharmacy {
 
+    final String name = "Faid Pharmacy";
     private  ArrayList<Sale> saleList;
     private ArrayList<Doctor> doctorList;
     private ArrayList<Pharmacist> pharmacistList;
@@ -56,7 +57,7 @@ public class Pharmacy {
         drugList.add(prescriptionDrug);
     }
 
-    public void setOtcList (ArrayList<OverTheCounter> otcList) {
+    public void setOtcList(ArrayList<OverTheCounter> otcList) {
         this.otcList = otcList;
     }
 }

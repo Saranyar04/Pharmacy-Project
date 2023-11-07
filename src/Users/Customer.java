@@ -38,11 +38,11 @@ public class Customer extends Person {
 
     @Override
     public String toString () {
-        return "Customer{" + "Legal Name='" + super.getLegalName ()
-                + "Gender='" + super.getGender ()
-                + "Date of Birth='" + super.getDateOfBirth ()
-                + "Phone No='" + super.getPhoneNo ()
-                + "Address=" + super.getAddress () +
+        return "Customer{" + "Legal Name='" + super.getLegalName()
+                + "Gender='" + super.getGender()
+                + "Date of Birth='" + super.getDateOfBirth()
+                + "Phone No='" + super.getPhoneNo()
+                + "Address=" + super.getAddress() +
                 "customerId='" + customerId + '\'' +
                 ", insurance='" + insurance + '\'' +
                 ", doctorName='" + doctorName + '\'' +
