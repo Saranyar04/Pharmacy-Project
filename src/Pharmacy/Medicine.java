@@ -25,7 +25,6 @@ public class Medicine {
     }
 
     public String getType() {
-
         return type;
     }
 
