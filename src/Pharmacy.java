@@ -1,17 +1,18 @@
 import pharmacy.*;
 import users.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pharmacy {
 
-    protected String name = "Faid Pharmacy";
-    private List<Sale> saleList =  new ArrayList<>();
-    private List<Doctor> doctorList =  new ArrayList<>();
-    private List<Employee> EmployeeList =  new ArrayList<>();
-    private List<Medicine> medicineList =  new ArrayList<>();
-    private List<Prescription> prescriptionList =  new ArrayList<>();
-    private List<Customer> customerList =  new ArrayList<>();
+    protected String pharmacyName = "Faid Pharmacy";
+    private List<Sale> saleList = new ArrayList<>();
+    private List<Doctor> doctorList = new ArrayList<>();
+    private List<Employee> EmployeeList = new ArrayList<>();
+    private List<Medicine> medicineList = new ArrayList<>();
+    private List<Prescription> prescriptionList = new ArrayList<>();
+    private List<Customer> customerList = new ArrayList<>();
 
     public void addMedicine(Medicine medicine) {
         medicineList.add(medicine);
@@ -35,5 +36,13 @@ public class Pharmacy {
 
     public void addCustomer(Customer customer) {
         customerList.add(customer);
+    }
+
+    public void sell(Employee employee, Customer customer, List<Medicine> medicines) {
+        float sellTotal = 0;
+        for (Medicine i : medicines) {
+            sellTotal = (float) (sellTotal + i.getPrice());
+        }
+        System.out.println("Receipt Details : " + " Employee Name : " + employee.getLegalName() + " Customer Name :" + customer.getLegalName() + " Total : " + sellTotal);
     }
 }

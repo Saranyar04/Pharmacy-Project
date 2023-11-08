@@ -1,10 +1,12 @@
 package users;
 
+import java.util.Date;
+
 public class Doctor extends Person {
 
     private String doctorType;
 
-    public Doctor(String legalName, String gender, String dateOfBirth, String phoneNo, String address, String email, String doctorType) {
+    public Doctor(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String doctorType) {
         super(legalName, gender, dateOfBirth, phoneNo, address, email);
         this.doctorType = doctorType;
     }

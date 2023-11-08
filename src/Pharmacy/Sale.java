@@ -13,15 +13,15 @@ public class Sale {
     private Customer customer;
     private Employee employee;
     private float receiptTotal;
-    private float insurancePays;
-    private float customerOwes;
+    private float paidByInsurance;
+    private float paidByCustomer;
 
     private void calculate(List<Medicine> listOfItems){
         for (Medicine i : listOfItems) {
-            receiptTotal = (float) (receiptTotal + i.getPrice());
+            receiptTotal = (float) (receiptTotal + i.getPrice( ));
         }
-        insurancePays = (float) (receiptTotal*0.30);
-        customerOwes = receiptTotal - insurancePays;
+        paidByInsurance = (float) (receiptTotal * 0.30);
+        paidByCustomer = receiptTotal - paidByInsurance;
     }
 
     public Sale(String number, List<Medicine> listOfItems, Customer customer, Employee employee) {
@@ -65,20 +65,20 @@ public class Sale {
         this.receiptTotal = receiptTotal;
     }
 
-    public float getInsurancePays() {
-        return insurancePays;
+    public float getPaidByInsurance() {
+        return paidByInsurance;
     }
 
-    public void setInsurancePays(float insurancePays) {
-        this.insurancePays = insurancePays;
+    public void setInsurancePays(float paidByInsurance) {
+        this.paidByInsurance = paidByInsurance;
     }
 
-    public float getCustomerOwes() {
-        return customerOwes;
+    public float getPaidByCustomer() {
+        return paidByCustomer;
     }
 
-    public void setCustomerOwes(float customerOwes) {
-        this.customerOwes = customerOwes;
+    public void setCustomerOwes(float paidByCustomer) {
+        this.paidByCustomer = paidByCustomer;
     }
 
     public Employee getEmployee() {
@@ -103,8 +103,8 @@ public class Sale {
                 "number='" + number + '\'' +
                 ", todayDate=" + todayDate +
                 ", receiptTotal=" + receiptTotal +
-                ", insurancePays=" + insurancePays +
-                ", customerOwes=" + customerOwes +
+                ", paidByInsurance=" + paidByInsurance +
+                ", paidByCustomer=" + paidByCustomer +
                 '}';
     }
 }
