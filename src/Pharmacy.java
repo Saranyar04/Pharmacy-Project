@@ -12,7 +12,7 @@ public class Pharmacy {
     private List<Medicine> medicineList =  new ArrayList<>();
     private List<Prescription> prescriptionList =  new ArrayList<>();
     private List<Customer> customerList =  new ArrayList<>();
-    
+
     public void addMedicine(Medicine medicine) {
         medicineList.add(medicine);
     }
