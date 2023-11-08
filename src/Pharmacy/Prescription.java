@@ -9,19 +9,23 @@ import java.util.Objects;
 public class Prescription {
 
     private int number;
-    private List<Medicine> Medicine_List  = new ArrayList<Medicine>();
+    private List<Medicine> medicineList = new ArrayList<Medicine>();
     private int quantity;
     private String prescriptionDosage;
     private Doctor doctor;
     private Customer customer;
 
-    public Prescription(int number, List<Medicine> medList, int Quantity, String prescriptionDosage, Doctor doctor, Customer customer) {
+    public Prescription(int number, List<Medicine> medicineList, int quantity, String prescriptionDosage, Doctor doctor, Customer customer) {
         this.number = number;
-        this.Medicine_List = medList;
-        this.quantity = Quantity;
+        this.medicineList = medicineList;
+        this.quantity = quantity;
         this.prescriptionDosage = prescriptionDosage;
         this.doctor = doctor;
         this.customer = customer;
+    }
+
+    public List<Medicine> getMedicineList() {
+        return medicineList;
     }
 
     public Doctor getDoctor() {
@@ -44,11 +48,23 @@ public class Prescription {
         if (o == null || getClass( ) != o.getClass( ))
             return false;
         Prescription that = (Prescription) o;
-        return number == that.number && quantity == that.quantity && Objects.equals(Medicine_List, that.Medicine_List) && Objects.equals(prescriptionDosage, that.prescriptionDosage) && Objects.equals (doctor, that.doctor) && Objects.equals (customer, that.customer);
+        return number == that.number && quantity == that.quantity && Objects.equals(medicineList, that.medicineList) && Objects.equals(prescriptionDosage, that.prescriptionDosage) && Objects.equals (doctor, that.doctor) && Objects.equals (customer, that.customer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, Medicine_List, quantity, prescriptionDosage, doctor, customer);
+        return Objects.hash(number, medicineList, quantity, prescriptionDosage, doctor, customer);
+    }
+
+    @Override
+    public String toString() {
+        return "Prescription{" +
+                "number=" + number +
+                ", medicineList=" + medicineList +
+                ", quantity=" + quantity +
+                ", prescriptionDosage='" + prescriptionDosage + '\'' +
+                ", doctor=" + doctor +
+                ", customer=" + customer +
+                '}';
     }
 }

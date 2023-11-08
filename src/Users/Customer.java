@@ -28,7 +28,7 @@ public class Customer extends Person {
         return customerId;
     }
 
-    public void setCustomerId(double customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

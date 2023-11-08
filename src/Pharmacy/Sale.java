@@ -1,29 +1,35 @@
 package pharmacy;
 
 import users.Customer;
-import users.SalesPerson;
+import users.Employee;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Sale {
 
     private String number;
-    private String date;
+    private LocalDate todayDate;
     private List<Medicine> listOfItems;
     private Customer customer;
-    private SalesPerson salesPerson;
+    private Employee employee;
     private float receiptTotal;
     private float insurancePays;
     private float customerOwes;
+    private void calculate(List<Medicine> listOfItems){
+        for (Medicine i : listOfItems) {
+            receiptTotal = (float) (receiptTotal + i.getPrice());
+        }
+        insurancePays = (float) (receiptTotal*0.30);
+        customerOwes = receiptTotal - insurancePays;
+    }
 
-    public Sale(String number, String date, List<Medicine> listOfItems, Customer customer, SalesPerson salesPerson, float receiptTotal, float insurancePays, float customerOwes) {
+    public Sale(String number, List<Medicine> listOfItems, Customer customer, Employee employee) {
         this.number = number;
-        this.date = date;
+        this.todayDate = java.time.LocalDate.now();
         this.listOfItems = listOfItems;
         this.customer = customer;
-        this.salesPerson = salesPerson;
-        this.receiptTotal = receiptTotal;
-        this.insurancePays = insurancePays;
-        this.customerOwes = customerOwes;
+        this.employee = employee;
+        calculate(listOfItems);
     }
 
     public String getNumber() {
@@ -32,14 +38,6 @@ public class Sale {
 
     public void setNumber(String number) {
         this.number = number;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public List<Medicine> getListOfItems() {
@@ -56,14 +54,6 @@ public class Sale {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public SalesPerson getSalesPerson() {
-        return salesPerson;
-    }
-
-    public void setSalesPerson(SalesPerson salesPerson) {
-        this.salesPerson = salesPerson;
     }
 
     public float getReceiptTotal() {
@@ -88,6 +78,33 @@ public class Sale {
 
     public void setCustomerOwes(float customerOwes) {
         this.customerOwes = customerOwes;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public LocalDate getTodayDate() {
+        return todayDate;
+    }
+
+    public void setTodayDate(LocalDate todayDate) {
+        this.todayDate = todayDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Sale{" +
+                "number='" + number + '\'' +
+                ", todayDate=" + todayDate +
+                ", receiptTotal=" + receiptTotal +
+                ", insurancePays=" + insurancePays +
+                ", customerOwes=" + customerOwes +
+                '}';
     }
 }
 

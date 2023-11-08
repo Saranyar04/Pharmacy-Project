@@ -2,7 +2,7 @@ package users;
 
 import static java.lang.Math.random;
 
-public abstract class Employee extends Person {
+public class Employee extends Person {
 
     private String designation;
     private float salary;

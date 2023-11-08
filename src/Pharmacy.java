@@ -8,15 +8,14 @@ public class Pharmacy {
     protected String name = "Faid Pharmacy";
     private List<Sale> saleList =  new ArrayList<>();
     private List<Doctor> doctorList =  new ArrayList<>();
-    private List<Pharmacist> pharmacistList =  new ArrayList<>();
-    private List<SalesPerson> salesPersonList =  new ArrayList<>();
-    private List<OverTheCounter> otcList =  new ArrayList<>();
+    private List<Employee> EmployeeList =  new ArrayList<>();
+    private List<Medicine> medicineList =  new ArrayList<>();
     private List<Prescription> prescriptionList =  new ArrayList<>();
     private List<Customer> customerList =  new ArrayList<>();
-    private List<PrescriptionDrug> drugList =  new ArrayList<>();
 
-    public void addOtc(OverTheCounter overTheCounter) {
-        otcList.add(overTheCounter);
+
+    public void addMedicine(Medicine medicine) {
+        medicineList.add(medicine);
     }
 
     public void addSale(Sale sale) {
@@ -27,12 +26,8 @@ public class Pharmacy {
         doctorList.add(doctor);
     }
 
-    public void addPharmacist(Pharmacist pharmacist) {
-        pharmacistList.add(pharmacist);
-    }
-
-    public void addSalesPerson(SalesPerson salesPerson) {
-        salesPersonList.add(salesPerson);
+    public void addEmployee(Employee employee) {
+        EmployeeList.add(employee);
     }
 
     public void addPrescription(Prescription prescription) {
@@ -41,13 +36,5 @@ public class Pharmacy {
 
     public void addCustomer(Customer customer) {
         customerList.add(customer);
-    }
-
-    public void addPrescriptionDrug(PrescriptionDrug prescriptionDrug) {
-        drugList.add(prescriptionDrug);
-    }
-
-    public void setOtcList(ArrayList<OverTheCounter> otcList) {
-        this.otcList = otcList;
     }
 }
