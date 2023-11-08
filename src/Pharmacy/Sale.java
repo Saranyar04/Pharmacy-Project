@@ -15,6 +15,7 @@ public class Sale {
     private float receiptTotal;
     private float insurancePays;
     private float customerOwes;
+
     private void calculate(List<Medicine> listOfItems){
         for (Medicine i : listOfItems) {
             receiptTotal = (float) (receiptTotal + i.getPrice());
