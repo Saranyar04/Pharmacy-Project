@@ -1,6 +1,5 @@
 package users;
 
-import static java.lang.Math.random;
 import java.util.Date;
 
 public class Employee extends Person {
@@ -29,5 +28,4 @@ public class Employee extends Person {
     public void setSalary(float salary) {
         this.salary = salary;
     }
-
 }

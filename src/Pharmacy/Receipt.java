@@ -2,6 +2,7 @@ package pharmacy;
 
 import users.Customer;
 import users.Employee;
+
 import java.util.List;
 
 public class Receipt {
@@ -11,7 +12,7 @@ public class Receipt {
     List<Medicine> medicines;
     private float total;
 
-    public Receipt(Customer saleCustomer, Employee saleEmployee, List<Medicine> medicines,float total) {
+    public Receipt(Customer saleCustomer, Employee saleEmployee, List<Medicine> medicines, float total) {
         this.medicines = medicines;
         this.saleCustomer = saleCustomer;
         this.saleEmployee = saleEmployee;

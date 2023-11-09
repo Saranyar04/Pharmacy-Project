@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Prescription {
 
     private int number;
-    private List<Medicine> medicineList = new ArrayList<Medicine>();
+    private List<Medicine> medicineList;
     private int quantity;
     private String prescriptionDosage;
     private Doctor doctor;

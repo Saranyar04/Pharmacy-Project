@@ -18,7 +18,6 @@ public class Pharmacy implements Sale {
         medicineList.add(medicine);
     }
 
-
     public void addDoctor(Doctor doctor) {
         doctorList.add(doctor);
     }
@@ -39,20 +38,21 @@ public class Pharmacy implements Sale {
     public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) {
         float sellTotal = 0;
         for (Medicine i : medicines) {
-            sellTotal = (float) (sellTotal + i.getPrice());
+            sellTotal = (float) (sellTotal + i.getPrice( ));
         }
-        if (customer.getInsurance().equals("YES")) {
+
+        if (customer.getInsurance( ).equals("YES")) {
             float paidByInsurance = (float) (sellTotal * 0.30);
             float paidByCustomer = sellTotal - paidByInsurance;
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
             receipts.add(insuranceSaleReceipt);
-        }
-        else {
+        } else {
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, sellTotal);
             receipts.add(insuranceSaleReceipt);
         }
         System.out.println("Receipt Details=" + receipts);
     }
+
     public List<Receipt> getReceipts() {
         return receipts;
     }

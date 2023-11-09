@@ -9,7 +9,7 @@ public class Medicine {
     private String description;
     private double price;
 
-    public Medicine(String medicineId,String name, String type, String company, String description, double price) {
+    public Medicine(String medicineId, String name, String type, String company, String description, double price) {
         this.medicineId = medicineId;
         this.name = name;
         this.type = type;
