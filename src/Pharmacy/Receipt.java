@@ -2,7 +2,6 @@ package pharmacy;
 
 import users.Customer;
 import users.Employee;
-
 import java.util.List;
 
 public class Receipt {
