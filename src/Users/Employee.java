@@ -7,13 +7,11 @@ public class Employee extends Person {
 
     private String designation;
     private float salary;
-    private double employeeId;
 
-    public Employee(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String designation, float salary, String employeeId) {
+    public Employee(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String designation, float salary) {
         super (legalName, gender, dateOfBirth, phoneNo, address, email);
         this.designation = designation;
         this.salary = salary;
-        this.employeeId =  random();
     }
 
     public String getDesignation() {
@@ -32,11 +30,4 @@ public class Employee extends Person {
         this.salary = salary;
     }
 
-    public double getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(double employeeId) {
-        this.employeeId = employeeId;
-    }
 }
