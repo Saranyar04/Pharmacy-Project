@@ -1,6 +1,5 @@
 import pharmacy.*;
 import users.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +13,6 @@ public class Pharmacy implements Sale {
     private List<Customer> customerList = new ArrayList<>();
 
     private List<Receipt> receipts = new ArrayList<>();
-    private String employeeName;
-    private String customerName;
-    private float total;
 
     public void addMedicine(Medicine medicine) {
         medicineList.add(medicine);
@@ -45,7 +41,7 @@ public class Pharmacy implements Sale {
         for (Medicine i : medicines) {
             sellTotal = (float) (sellTotal + i.getPrice());
         }
-        if(customer.getInsurance().equals("YES")){
+        if (customer.getInsurance().equals("YES")) {
             float paidByInsurance = (float) (sellTotal * 0.30);
             float paidByCustomer = sellTotal - paidByInsurance;
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
