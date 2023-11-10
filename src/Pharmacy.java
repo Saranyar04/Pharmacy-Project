@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Pharmacy implements Sale {
 
-    final String Pharmacy_Name = "Faid Pharmacy";
+    private String pharmacyName;
     private List<Doctor> doctorList = new ArrayList<>();
-    private List<Employee> EmployeeList = new ArrayList<>();
+    private List<Employee> employeeList = new ArrayList<>();
     private List<Medicine> medicineList = new ArrayList<>();
     private List<Prescription> prescriptionList = new ArrayList<>();
     private List<Customer> customerList = new ArrayList<>();
@@ -23,7 +23,7 @@ public class Pharmacy implements Sale {
     }
 
     public void addEmployee(Employee employee) {
-        EmployeeList.add(employee);
+        employeeList.add(employee);
     }
 
     public void addPrescription(Prescription prescription) {
@@ -59,5 +59,13 @@ public class Pharmacy implements Sale {
 
     public void setReceipts(List<Receipt> receipts) {
         this.receipts = receipts;
+    }
+
+    public String getPharmacyName() {
+        return pharmacyName;
+    }
+
+    public void setPharmacyName(String pharmacy_Name) {
+        pharmacyName = "FAid Pharmacy";
     }
 }

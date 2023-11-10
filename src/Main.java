@@ -9,7 +9,7 @@ public class Main {
 
     public static void main (String[] args) {
         Pharmacy pharmacy = new Pharmacy();
-        System.out.println(pharmacy.Pharmacy_Name);
+        System.out.println(pharmacy.getPharmacy_Name());
 
         Doctor doctor = new Doctor("Seegol", "Male", new Date("3/12/1989"), "4132458796", "61 Riverview Ave, New Jersey", "seegol@yahoo.com,", "Surgeon");
         pharmacy.addDoctor(doctor);
