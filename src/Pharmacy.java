@@ -3,7 +3,7 @@ import users.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pharmacy implements Sale {
+public class Pharmacy implements ISale {
 
     private String pharmacyName;
     private List<Doctor> doctorList = new ArrayList<>();
@@ -11,7 +11,6 @@ public class Pharmacy implements Sale {
     private List<Medicine> medicineList = new ArrayList<>();
     private List<Prescription> prescriptionList = new ArrayList<>();
     private List<Customer> customerList = new ArrayList<>();
-
     private List<Receipt> receipts = new ArrayList<>();
 
     public void addMedicine(Medicine medicine) {
@@ -38,10 +37,10 @@ public class Pharmacy implements Sale {
     public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) {
         float sellTotal = 0;
         for (Medicine i : medicines) {
-            sellTotal = (float) (sellTotal + i.getPrice( ));
+            sellTotal = (float) (sellTotal + i.getPrice());
         }
 
-        if (customer.getInsurance( ).equals("YES")) {
+        if (customer.getInsurance().equals("YES")) {
             float paidByInsurance = (float) (sellTotal * 0.30);
             float paidByCustomer = sellTotal - paidByInsurance;
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);

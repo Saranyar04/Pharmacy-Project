@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Receipt {
 
-    Customer saleCustomer;
-    Employee saleEmployee;
-    List<Medicine> medicines;
+    private Customer saleCustomer;
+    private Employee saleEmployee;
+    private List<Medicine> medicines;
     private float total;
 
     public Receipt(Customer saleCustomer, Employee saleEmployee, List<Medicine> medicines, float total) {
