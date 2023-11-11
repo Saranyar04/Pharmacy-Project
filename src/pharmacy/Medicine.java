@@ -2,17 +2,31 @@ package pharmacy;
 
 public class Medicine {
 
+    private String medicineId;
     private String name;
     private String type;
     private String company;
     private String description;
     private double price;
 
-    public Medicine(String name, String type, String company, String description, double price) {
+    public Medicine(String medicineId, String name, String type, String company, String description, double price) {
+        this.medicineId = medicineId;
         this.name = name;
         this.type = type;
         this.company = company;
         this.description = description;
+        this.price = price;
+    }
+
+    public String getMedicineId() {
+        return medicineId;
+    }
+
+    public void setMedicineId(String medicineId) {
+        this.medicineId = medicineId;
+    }
+
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -27,6 +41,7 @@ public class Medicine {
     public String getType() {
         return type;
     }
+
     public void setType(String type) {
         this.type = type;
     }
@@ -53,5 +68,17 @@ public class Medicine {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Medicine{" +
+                "medicineId='" + medicineId + '\'' +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", company='" + company + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
