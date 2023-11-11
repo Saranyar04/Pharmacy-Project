@@ -3,7 +3,7 @@ package users;
 import java.util.Date;
 import java.util.UUID;
 
-public class Person {
+abstract public class Person {
 
     private String personId;
     private String legalName;

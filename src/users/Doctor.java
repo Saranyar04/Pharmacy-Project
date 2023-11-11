@@ -2,7 +2,7 @@ package users;
 
 import java.util.Date;
 
-public class Doctor extends Person {
+public final class Doctor extends Person {
 
     private String doctorType;
 
