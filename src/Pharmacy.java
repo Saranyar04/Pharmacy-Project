@@ -3,9 +3,10 @@ import users.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pharmacy implements ISale {
+final public class Pharmacy implements ISale, IPerson {
 
     private String pharmacyName;
+    private final static double TAX = 7.5;
     private List<Doctor> doctorList = new ArrayList<>();
     private List<Employee> employeeList = new ArrayList<>();
     private List<Medicine> medicineList = new ArrayList<>();
@@ -40,11 +41,22 @@ public class Pharmacy implements ISale {
             sellTotal = (float) (sellTotal + i.getPrice());
         }
 
-        if (customer.getInsurance().equals("YES")) {
-            float paidByInsurance = (float) (sellTotal * 0.30);
+        if (customer.getInsurance().equals("PLAN_A")) {
+            float paidByInsurance = (float) (sellTotal * IInsuranceRate.PLAN_A);
+            float paidByCustomer = sellTotal - paidByInsurance;
+            float tax = sellTotal * 
+            Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
+            receipts.add(insuranceSaleReceipt);
+        }else if (customer.getInsurance().equals("PLAN_B")) {
+            float paidByInsurance = (float) (sellTotal * IInsuranceRate.PLAN_B);
             float paidByCustomer = sellTotal - paidByInsurance;
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
             receipts.add(insuranceSaleReceipt);
+        } else if (customer.getInsurance().equals("PLAN_C")) {
+                float paidByInsurance = (float) (sellTotal * IInsuranceRate.PLAN_C);
+                float paidByCustomer = sellTotal - paidByInsurance;
+                Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
+                receipts.add(insuranceSaleReceipt);
         } else {
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, sellTotal);
             receipts.add(insuranceSaleReceipt);
@@ -67,4 +79,5 @@ public class Pharmacy implements ISale {
     public void setPharmacyName(String pharmacy_Name) {
         pharmacyName = "FAid Pharmacy";
     }
+
 }

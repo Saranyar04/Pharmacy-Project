@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-=======
-//Package
-
->>>>>>> main
 package pharmacy;
 
 public class Medicine {
 
-<<<<<<< HEAD
     private String medicineId;
     private String name;
     private String type;
@@ -87,11 +81,4 @@ public class Medicine {
                 ", price=" + price +
                 '}';
     }
-=======
-    public String medName;
-    public String medType;
-    public String medCompany;
-    public String medDescription;
-    public float medPrice;
->>>>>>> main
 }

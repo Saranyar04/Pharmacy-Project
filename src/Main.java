@@ -19,13 +19,13 @@ public class Main {
         List<Medicine> medicines = new ArrayList<>();
         medicines.add(new Medicine("M34528", "Tylenol", "Generic", "MDC laboratories", "Generic for age 13+", 23));
         medicines.add(new Medicine("M34567", "Paracetamol", "Generic", "TI lab", "for ages 15+", 13));
-        Customer firstCustomer = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132246731", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", "YES", doctor);
+        Customer firstCustomer = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132246731", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", "PLAN_A", doctor);
         pharmacy.addCustomer(firstCustomer);
 
         Prescription prescription = new Prescription(34512, medicines, 2, "Morning and Night after food", doctor, firstCustomer);
         pharmacy.addPrescription(prescription);
 
-        Customer  secondCustomer = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132458798","23 River Dr, New Jersey", "Lilly@gmail.com", "NO", doctor);
+        Customer  secondCustomer = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132458798","23 River Dr, New Jersey", "Lilly@gmail.com", "PLAN_B", doctor);
 
         pharmacy.calculateSale(employee, firstCustomer, medicines);
         pharmacy.calculateSale(employee, secondCustomer, medicines);
