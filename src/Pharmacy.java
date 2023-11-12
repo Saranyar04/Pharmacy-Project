@@ -1,51 +1,70 @@
-//package
-
-import pharmacy.OverTheCounter;
-import pharmacy.PrescriptionDrug;
-import pharmacy.Sales;
-import users.Customer;
-import users.Doctor;
-import users.Pharmacist;
-import users.SalesPerson;
-
+import pharmacy.*;
+import users.*;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Pharmacy {
+public class Pharmacy implements ISale {
 
-    public ArrayList<Sales> saleList;
+    private String pharmacyName;
+    private List<Doctor> doctorList = new ArrayList<>();
+    private List<Employee> employeeList = new ArrayList<>();
+    private List<Medicine> medicineList = new ArrayList<>();
+    private List<Prescription> prescriptionList = new ArrayList<>();
+    private List<Customer> customerList = new ArrayList<>();
+    private List<Receipt> receipts = new ArrayList<>();
 
-    public void addOtc(String mName, String mType, String mCompany, String mDescription, float mPrice, String otcId, String mUses) {
-        OverTheCounter otc = new OverTheCounter ( );
-        otc.medName = mName;
-        otc.medType = mType;
-        otc.medCompany = mCompany;
-        otc.medDescription = mDescription;
-        otc.medPrice = mPrice;
-        otc.otcId = otcId;
-        otc.uses = mUses;
+    public void addMedicine(Medicine medicine) {
+        medicineList.add(medicine);
     }
 
-    public void addPrescriptiondrug(String mName, String mType, String mCompany, String mDescription, float mPrice, String mId, String mDosage, String sInstruction) {
-        PrescriptionDrug p1 = new PrescriptionDrug ( );
-        p1.medName = mName;
-        p1.medType = mType;
-        p1.medCompany = mCompany;
-        p1.medDescription = mDescription;
-        p1.medPrice = mPrice;
-        p1.medId = mId;
-        p1.dosage = mDosage;
-        p1.specialInstruction = sInstruction;
+    public void addDoctor(Doctor doctor) {
+        doctorList.add(doctor);
     }
 
-    public void addSales(String rNumber, String rDate, String[] lItem, String cName, String sName, float rTotal, float insurancePays, float cOwes) {
-        Sales s1 = new Sales ( );
-        s1.receiptNumber = rNumber;
-        s1.receiptDate = rDate;
-        s1.listOfItems = lItem;
-        s1.customerName = cName;
-        s1.salesPerson = sName;
-        s1.receiptTotal = rTotal;
-        s1.insurancePays = insurancePays;
-        s1.customerOwes = cOwes;
+    public void addEmployee(Employee employee) {
+        employeeList.add(employee);
+    }
+
+    public void addPrescription(Prescription prescription) {
+        prescriptionList.add(prescription);
+    }
+
+    public void addCustomer(Customer customer) {
+        customerList.add(customer);
+    }
+
+    @Override
+    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) {
+        float sellTotal = 0;
+        for (Medicine i : medicines) {
+            sellTotal = (float) (sellTotal + i.getPrice());
+        }
+
+        if (customer.getInsurance().equals("YES")) {
+            float paidByInsurance = (float) (sellTotal * 0.30);
+            float paidByCustomer = sellTotal - paidByInsurance;
+            Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
+            receipts.add(insuranceSaleReceipt);
+        } else {
+            Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, sellTotal);
+            receipts.add(insuranceSaleReceipt);
+        }
+        System.out.println("Receipt Details=" + receipts);
+    }
+
+    public List<Receipt> getReceipts() {
+        return receipts;
+    }
+
+    public void setReceipts(List<Receipt> receipts) {
+        this.receipts = receipts;
+    }
+
+    public String getPharmacyName() {
+        return pharmacyName;
+    }
+
+    public void setPharmacyName(String pharmacy_Name) {
+        pharmacyName = "FAid Pharmacy";
     }
 }

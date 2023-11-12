@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+package users;
+
+import java.util.Date;
+
+public class Customer extends Person {
+
+    private String insurance;
+    private Doctor doctor;
+
+    public Customer(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String insurance, Doctor doctor) {
+        super(legalName, gender, dateOfBirth, phoneNo, address, email);
+        this.insurance = insurance;
+        this.doctor = doctor;
+=======
 //package
 
 package users;
@@ -18,10 +33,35 @@ public class Customer extends Person {
         this.customerId = customerId;
         this.insurance = insurance;
         this.doctorName = doctorName;
+>>>>>>> main
     }
 
     @Override
     public String toString() {
+<<<<<<< HEAD
+        return "Customer{" + "Person ID=" + super.getPersonId() +  " Legal Name='" + super.getLegalName()
+                + " Gender='" + super.getGender()
+                + " Date of Birth='" + super.getDateOfBirth()
+                + " Phone No='" + super.getPhoneNo()
+                + " Address=" + super.getAddress() +
+                '}';
+    }
+
+    public String getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(String insurance) {
+        this.insurance = insurance;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+=======
         return "Doctor " +
                 "Name : " + this.legalName +
                 ", Gender : " + this.gender +
@@ -32,5 +72,6 @@ public class Customer extends Person {
                 ", Customer Id : " + this.customerId +
                 ", Insurance : " + this.insurance +
                 ", Doctor Name : " + this.doctorName;
+>>>>>>> main
     }
 }
