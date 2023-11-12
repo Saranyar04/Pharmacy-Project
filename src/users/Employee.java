@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package users;
 
 import java.util.Date;
@@ -28,4 +29,16 @@ public class Employee extends Person {
     public void setSalary(float salary) {
         this.salary = salary;
     }
+=======
+// Package
+
+package users;
+
+public abstract class Employee extends Person {
+
+    public String designation;
+    public float salary;
+    public String userName;
+    public String password;
+>>>>>>> main
 }
