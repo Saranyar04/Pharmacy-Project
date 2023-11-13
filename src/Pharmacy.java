@@ -41,17 +41,17 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
             sellTotal = (float) (sellTotal + i.getPrice( ));
         }
 
-        if (customer.getInsuranceType() == IInsuranceRate.PLAN_A) {
+        if (customer.getInsuranceRate() == IInsuranceRate.PLAN_A) {
             float paidByInsurance = sellTotal * ((float) IInsuranceRate.PLAN_A / 100);
             float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
             receipts.add(insuranceSaleReceipt);
-        } else if (customer.getInsuranceType() == IInsuranceRate.PLAN_B) {
+        } else if (customer.getInsuranceRate() == IInsuranceRate.PLAN_B) {
             float paidByInsurance = sellTotal * ((float) IInsuranceRate.PLAN_B / 100);
             float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
             receipts.add(insuranceSaleReceipt);
-        } else if (customer.getInsuranceType() == IInsuranceRate.PLAN_C) {
+        } else if (customer.getInsuranceRate() == IInsuranceRate.PLAN_C) {
             float paidByInsurance = sellTotal * ((float) IInsuranceRate.PLAN_C / 100);
             float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
