@@ -2,7 +2,7 @@ package pharmacy;
 
 import users.Customer;
 import users.Doctor;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -45,7 +45,7 @@ public class Prescription {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass( ) != o.getClass( ))
+        if (o == null || getClass() != o.getClass())
             return false;
         Prescription that = (Prescription) o;
         return number == that.number && quantity == that.quantity && Objects.equals(medicineList, that.medicineList) && Objects.equals(prescriptionDosage, that.prescriptionDosage) && Objects.equals (doctor, that.doctor) && Objects.equals (customer, that.customer);

@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ISale {
 
-    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines);
+    void calculateSale(Employee employee, Customer customer, List<Medicine> medicines);
 
 }

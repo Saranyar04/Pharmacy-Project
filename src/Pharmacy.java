@@ -5,13 +5,13 @@ import java.util.List;
 
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
-    private String pharmacyName;
+    private static String pharmacyName;
     private final static double TAX = 7.5;
-    private List<Doctor> doctorList = new ArrayList<>();
-    private List<Employee> employeeList = new ArrayList<>();
-    private List<Medicine> medicineList = new ArrayList<>();
-    private List<Prescription> prescriptionList = new ArrayList<>();
-    private List<Customer> customerList = new ArrayList<>();
+    private final List<Doctor> doctorList = new ArrayList<>();
+    private final List<Employee> employeeList = new ArrayList<>();
+    private final List<Medicine> medicineList = new ArrayList<>();
+    private final List<Prescription> prescriptionList = new ArrayList<>();
+    private final List<Customer> customerList = new ArrayList<>();
     private List<Receipt> receipts = new ArrayList<>();
 
     public void addMedicine(Medicine medicine) {
@@ -42,17 +42,17 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         }
 
         if (customer.getInsurance().equals("PLAN_A")) {
-            float paidByInsurance = (float) (sellTotal * IInsuranceRate.PLAN_A);
+            float paidByInsurance = sellTotal * IInsuranceRate.PLAN_A;
             float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
             receipts.add(insuranceSaleReceipt);
         } else if (customer.getInsurance().equals("PLAN_B")) {
-            float paidByInsurance = (float) (sellTotal * IInsuranceRate.PLAN_B);
+            float paidByInsurance = sellTotal * IInsuranceRate.PLAN_B;
             float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
             receipts.add(insuranceSaleReceipt);
         } else if (customer.getInsurance().equals("PLAN_C")) {
-            float paidByInsurance = (float) (sellTotal * IInsuranceRate.PLAN_C);
+            float paidByInsurance = sellTotal * IInsuranceRate.PLAN_C;
             float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
             receipts.add(insuranceSaleReceipt);
@@ -79,5 +79,4 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     public void setPharmacyName(String pharmacy_Name) {
         pharmacyName = "FAid Pharmacy";
     }
-
 }

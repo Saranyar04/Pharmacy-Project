@@ -28,4 +28,8 @@ public class Employee extends Person {
     public void setSalary(float salary) {
         this.salary = salary;
     }
+
+    final void printEmployeeDetails() {
+        System.out.println("Employee Information : " + "Legal Name : " + super.getLegalName() + "Phone No : "  + super.getPhoneNo() + "Address : " + super.getAddress());
+    }
 }
