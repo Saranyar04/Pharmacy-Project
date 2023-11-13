@@ -7,4 +7,5 @@ public interface IPerson {
     void addDoctor(Doctor doctor);
 
     void addCustomer(Customer customer);
+
 }

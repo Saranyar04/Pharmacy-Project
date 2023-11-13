@@ -16,6 +16,10 @@ public class Main {
 
         Employee employee = new Employee("Kim", "Female", new Date("04/02/2000"), "23498764537", "23 Riverview Dr, New Jersey","kim@gmail.com","pharmacist", 3000);
         pharmacy.addEmployee(employee);
+
+        Medicine medicine = new Medicine("M453456", "Paracetamol", "Generic", "PNC Pharmacy", "Pain reliever", 12.30);
+        pharmacy.addMedicine(medicine);
+
         List<Medicine> medicines = new ArrayList<>();
         medicines.add(new Medicine("M34528", "Tylenol", "Generic", "MDC laboratories", "Generic for age 13+", 23));
         medicines.add(new Medicine("M34567", "Paracetamol", "Generic", "TI lab", "for ages 15+", 13));
