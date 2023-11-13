@@ -47,4 +47,14 @@ public class Receipt implements IPrint {
         System.out.println("Receipt Details");
         System.out.println("Customer Name : " + saleCustomer.getLegalName() + " Employee Name : " + saleEmployee.getLegalName() + " Receipt Total : " + total);
     }
+
+    @Override
+    public String toString() {
+        return "Receipt{" +
+                "saleCustomer=" + saleCustomer +
+                ", saleEmployee=" + saleEmployee +
+                ", medicines=" + medicines +
+                ", total=" + total +
+                '}';
+    }
 }
