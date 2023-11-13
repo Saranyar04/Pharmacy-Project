@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 package pharmacy;
 
 import users.Customer;
 import users.Doctor;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -46,7 +45,7 @@ public class Prescription {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass( ) != o.getClass( ))
+        if (o == null || getClass() != o.getClass())
             return false;
         Prescription that = (Prescription) o;
         return number == that.number && quantity == that.quantity && Objects.equals(medicineList, that.medicineList) && Objects.equals(prescriptionDosage, that.prescriptionDosage) && Objects.equals (doctor, that.doctor) && Objects.equals (customer, that.customer);
@@ -67,28 +66,5 @@ public class Prescription {
                 ", doctor=" + doctor +
                 ", customer=" + customer +
                 '}';
-=======
-//package
-
-package pharmacy;
-import java.util.ArrayList;
-import java.util.List;
-
-public class Prescription {
-
-    public int prescriptionNo;
-    public List<String> medList  = new ArrayList<> ();
-    public int quantity;
-    public String prescriptionDosage;
-    public String doctorName;
-    public String customerId;
-    public Prescription(int prescriptionNo, List<String> medList, int quantity, String prescriptionDosage, String doctorName, String customerId) {
-        this.prescriptionNo = prescriptionNo;
-        this.medList = medList;
-        this.quantity = quantity;
-        this.prescriptionDosage = prescriptionDosage;
-        this.doctorName = doctorName;
-        this.customerId = customerId;
->>>>>>> main
     }
 }

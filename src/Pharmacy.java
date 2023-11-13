@@ -1,16 +1,21 @@
+import interfaces.IInsuranceRate;
+import interfaces.IPerson;
+import interfaces.IPharmacy;
+import interfaces.ISale;
 import pharmacy.*;
 import users.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pharmacy implements ISale {
+final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
-    private String pharmacyName;
-    private List<Doctor> doctorList = new ArrayList<>();
-    private List<Employee> employeeList = new ArrayList<>();
-    private List<Medicine> medicineList = new ArrayList<>();
-    private List<Prescription> prescriptionList = new ArrayList<>();
-    private List<Customer> customerList = new ArrayList<>();
+    private static String pharmacyName;
+    private final static double TAX = 7.5;
+    private final List<Doctor> doctorList = new ArrayList<>();
+    private final List<Employee> employeeList = new ArrayList<>();
+    private final List<Medicine> medicineList = new ArrayList<>();
+    private final List<Prescription> prescriptionList = new ArrayList<>();
+    private final List<Customer> customerList = new ArrayList<>();
     private List<Receipt> receipts = new ArrayList<>();
 
     public void addMedicine(Medicine medicine) {
@@ -37,15 +42,26 @@ public class Pharmacy implements ISale {
     public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) {
         float sellTotal = 0;
         for (Medicine i : medicines) {
-            sellTotal = (float) (sellTotal + i.getPrice());
+            sellTotal = (float) (sellTotal + i.getPrice( ));
         }
 
-        if (customer.getInsurance().equals("YES")) {
-            float paidByInsurance = (float) (sellTotal * 0.30);
-            float paidByCustomer = sellTotal - paidByInsurance;
+        if (customer.getInsuranceRate() == IInsuranceRate.PLAN_A) {
+            float paidByInsurance = sellTotal * ((float) IInsuranceRate.PLAN_A / 100);
+            float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
+            Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
+            receipts.add(insuranceSaleReceipt);
+        } else if (customer.getInsuranceRate() == IInsuranceRate.PLAN_B) {
+            float paidByInsurance = sellTotal * ((float) IInsuranceRate.PLAN_B / 100);
+            float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
+            Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
+            receipts.add(insuranceSaleReceipt);
+        } else if (customer.getInsuranceRate() == IInsuranceRate.PLAN_C) {
+            float paidByInsurance = sellTotal * ((float) IInsuranceRate.PLAN_C / 100);
+            float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
             receipts.add(insuranceSaleReceipt);
         } else {
+            float paidByCustomer = (float) ((sellTotal) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, sellTotal);
             receipts.add(insuranceSaleReceipt);
         }

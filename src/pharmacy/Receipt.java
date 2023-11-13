@@ -1,10 +1,11 @@
 package pharmacy;
 
+import interfaces.IPrint;
 import users.Customer;
 import users.Employee;
 import java.util.List;
 
-public class Receipt {
+public class Receipt implements IPrint {
 
     private Customer saleCustomer;
     private Employee saleEmployee;
@@ -43,11 +44,17 @@ public class Receipt {
     }
 
     @Override
+    public void printReceipt(Receipt receipt) {
+        System.out.println("Receipt Details");
+        System.out.println("Customer Name : " + saleCustomer.getLegalName() + " Employee Name : " + saleEmployee.getLegalName() + " Receipt Total : " + total);
+    }
+
+    @Override
     public String toString() {
         return "Receipt{" +
                 "saleCustomer=" + saleCustomer +
                 ", saleEmployee=" + saleEmployee +
-                ", Medicine= " + medicines +
+                ", medicines=" + medicines +
                 ", total=" + total +
                 '}';
     }
