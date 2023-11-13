@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class Customer extends Person {
 
-    private int insurance;
+    private String insurance;
     private Doctor doctor;
 
-    public Customer(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, int insurance, Doctor doctor) {
+    public Customer(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String insurance, Doctor doctor) {
         super(legalName, gender, dateOfBirth, phoneNo, address, email);
         this.insurance = insurance;
         this.doctor = doctor;
@@ -23,11 +23,11 @@ public class Customer extends Person {
                 '}';
     }
 
-    public int getInsurance() {
+    public String getInsurance() {
         return insurance;
     }
 
-    public void setInsurance(int insurance) {
+    public void setInsurance(String insurance) {
         this.insurance = insurance;
     }
 
