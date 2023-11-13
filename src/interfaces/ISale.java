@@ -1,5 +1,6 @@
-package pharmacy;
+package interfaces;
 
+import pharmacy.Medicine;
 import users.Customer;
 import users.Employee;
 import java.util.List;

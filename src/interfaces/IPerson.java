@@ -1,4 +1,8 @@
-package users;
+package interfaces;
+
+import users.Customer;
+import users.Doctor;
+import users.Employee;
 
 public interface IPerson {
 

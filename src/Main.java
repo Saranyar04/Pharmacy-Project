@@ -1,3 +1,4 @@
+import interfaces.IInsuranceRate;
 import pharmacy.*;
 import users.Customer;
 import users.Doctor;

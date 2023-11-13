@@ -1,3 +1,7 @@
+import interfaces.IInsuranceRate;
+import interfaces.IPerson;
+import interfaces.IPharmacy;
+import interfaces.ISale;
 import pharmacy.*;
 import users.*;
 import java.util.ArrayList;

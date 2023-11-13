@@ -1,4 +1,7 @@
-package pharmacy;
+package interfaces;
+
+import pharmacy.Medicine;
+import pharmacy.Prescription;
 
 public interface IPharmacy {
 

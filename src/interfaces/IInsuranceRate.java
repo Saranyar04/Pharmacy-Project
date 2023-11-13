@@ -1,3 +1,5 @@
+package interfaces;
+
 public interface IInsuranceRate {
 
     int PLAN_A = 20;

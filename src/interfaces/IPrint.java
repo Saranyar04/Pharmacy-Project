@@ -1,4 +1,6 @@
-package pharmacy;
+package interfaces;
+
+import pharmacy.Receipt;
 
 public interface IPrint {
 
