@@ -1,5 +1,7 @@
 package pharmacy;
 
+import exceptions.PriceException;
+
 public class Medicine {
 
     private String medicineId;
@@ -9,7 +11,10 @@ public class Medicine {
     private String description;
     private double price;
 
-    public Medicine(String medicineId, String name, String type, String company, String description, double price) {
+    public Medicine(String medicineId, String name, String type, String company, String description, double price) throws PriceException {
+        if (price <= 0) {
+            throw new PriceException("Price is invalid.");
+        }
         this.medicineId = medicineId;
         this.name = name;
         this.type = type;

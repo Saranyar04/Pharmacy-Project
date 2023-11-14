@@ -1,5 +1,6 @@
 package pharmacy;
 
+import exceptions.MedicineListException;
 import users.Customer;
 import users.Doctor;
 
@@ -15,7 +16,10 @@ public class Prescription {
     private Doctor doctor;
     private Customer customer;
 
-    public Prescription(int number, List<Medicine> medicineList, int quantity, String prescriptionDosage, Doctor doctor, Customer customer) {
+    public Prescription(int number, List<Medicine> medicineList, int quantity, String prescriptionDosage, Doctor doctor, Customer customer) throws MedicineListException {
+        if (medicineList.isEmpty()) {
+            throw new MedicineListException("Medicine List must contain values.");
+        }
         this.number = number;
         this.medicineList = medicineList;
         this.quantity = quantity;

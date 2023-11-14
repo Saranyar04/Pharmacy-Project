@@ -1,3 +1,4 @@
+import exceptions.InsuranceRateException;
 import interfaces.IInsuranceRate;
 import interfaces.IPerson;
 import interfaces.IPharmacy;
@@ -39,7 +40,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     @Override
-    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) {
+    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) throws InsuranceRateException {
         float sellTotal = 0;
         for (Medicine i : medicines) {
             sellTotal = (float) (sellTotal + i.getPrice( ));
@@ -60,10 +61,13 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
             float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
             receipts.add(insuranceSaleReceipt);
-        } else {
+        } else if (customer.getInsuranceRate() == IInsuranceRate.NO_INSURANCE) {
             float paidByCustomer = (float) ((sellTotal) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, sellTotal);
             receipts.add(insuranceSaleReceipt);
+        }
+        else {
+            throw new InsuranceRateException("Invalid Insurance type");
         }
         System.out.println("Receipt Details=" + receipts);
     }
