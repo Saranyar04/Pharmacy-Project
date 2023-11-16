@@ -12,9 +12,6 @@ import java.util.List;
 
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
-    static {
-        System.setProperty("log4j.configurationFile", "log4j2.xml");
-    }
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
     private static String pharmacyName;
     private final static double TAX = 7.5;
