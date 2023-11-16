@@ -1,5 +1,8 @@
 package users;
 
+import exceptions.InvalidLegalNameException;
+import exceptions.InvalidPhoneNoException;
+
 import java.util.Date;
 
 public class Customer extends Person {
@@ -7,7 +10,7 @@ public class Customer extends Person {
     private int insuranceRate;
     private Doctor doctor;
 
-    public Customer(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, int insuranceRate, Doctor doctor) {
+    public Customer(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, int insuranceRate, Doctor doctor) throws InvalidLegalNameException, InvalidPhoneNoException {
         super(legalName, gender, dateOfBirth, phoneNo, address, email);
         this.insuranceRate = insuranceRate;
         this.doctor = doctor;

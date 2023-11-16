@@ -1,5 +1,8 @@
 package users;
 
+import exceptions.InvalidLegalNameException;
+import exceptions.InvalidPhoneNoException;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,7 +16,13 @@ abstract public class Person {
     private String address;
     private String email;
 
-    public Person(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email) {
+    public Person(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email) throws InvalidLegalNameException, InvalidPhoneNoException {
+        if (legalName.length() > 50) {
+            throw new InvalidLegalNameException("Legal Name should be less than 50 characters.");
+        }
+        if (phoneNo.length() != 10) {
+            throw new InvalidPhoneNoException("Phone number should be of ten numbers.");
+        }
         this.personId = UUID.randomUUID().toString();
         this.legalName = legalName;
         this.gender = gender;

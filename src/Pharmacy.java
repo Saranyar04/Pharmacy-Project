@@ -1,7 +1,10 @@
+import exceptions.InvalidInsuranceRateException;
 import interfaces.IInsuranceRate;
 import interfaces.IPerson;
 import interfaces.IPharmacy;
 import interfaces.ISale;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pharmacy.*;
 import users.*;
 import java.util.ArrayList;
@@ -9,6 +12,7 @@ import java.util.List;
 
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
     private static String pharmacyName;
     private final static double TAX = 7.5;
     private final List<Doctor> doctorList = new ArrayList<>();
@@ -39,7 +43,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     @Override
-    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) {
+    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) throws InvalidInsuranceRateException {
         float sellTotal = 0;
         for (Medicine i : medicines) {
             sellTotal = (float) (sellTotal + i.getPrice( ));
@@ -60,12 +64,15 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
             float paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
             receipts.add(insuranceSaleReceipt);
-        } else {
+        } else if (customer.getInsuranceRate() == IInsuranceRate.NO_INSURANCE) {
             float paidByCustomer = (float) ((sellTotal) + (sellTotal * (7.5 / 100)));
             Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, sellTotal);
             receipts.add(insuranceSaleReceipt);
         }
-        System.out.println("Receipt Details=" + receipts);
+        else {
+            throw new InvalidInsuranceRateException("Invalid Insurance type");
+        }
+        LOGGER.info("Receipt Details=" + receipts);
     }
 
     public List<Receipt> getReceipts() {
@@ -76,7 +83,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         this.receipts = receipts;
     }
 
-    public String getPharmacyName() {
+    public static String getPharmacyName() {
         return pharmacyName;
     }
 

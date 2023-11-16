@@ -1,12 +1,15 @@
 package users;
 
+import exceptions.InvalidLegalNameException;
+import exceptions.InvalidPhoneNoException;
+
 import java.util.Date;
 
 public class Doctor extends Person {
 
     private String doctorType;
 
-    public Doctor(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String doctorType) {
+    public Doctor(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String doctorType) throws InvalidLegalNameException, InvalidPhoneNoException {
         super(legalName, gender, dateOfBirth, phoneNo, address, email);
         this.doctorType = doctorType;
     }
