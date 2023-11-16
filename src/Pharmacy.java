@@ -83,7 +83,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         this.receipts = receipts;
     }
 
-    public String getPharmacyName() {
+    public static String getPharmacyName() {
         return pharmacyName;
     }
 
