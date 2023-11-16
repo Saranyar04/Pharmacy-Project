@@ -1,8 +1,10 @@
-import exceptions.InsuranceRateException;
+import exceptions.InvalidInsuranceRateException;
 import interfaces.IInsuranceRate;
 import interfaces.IPerson;
 import interfaces.IPharmacy;
 import interfaces.ISale;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pharmacy.*;
 import users.*;
 import java.util.ArrayList;
@@ -10,6 +12,10 @@ import java.util.List;
 
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
+    }
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
     private static String pharmacyName;
     private final static double TAX = 7.5;
     private final List<Doctor> doctorList = new ArrayList<>();
@@ -40,7 +46,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     @Override
-    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) throws InsuranceRateException {
+    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) throws InvalidInsuranceRateException {
         float sellTotal = 0;
         for (Medicine i : medicines) {
             sellTotal = (float) (sellTotal + i.getPrice( ));
@@ -67,9 +73,9 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
             receipts.add(insuranceSaleReceipt);
         }
         else {
-            throw new InsuranceRateException("Invalid Insurance type");
+            throw new InvalidInsuranceRateException("Invalid Insurance type");
         }
-        System.out.println("Receipt Details=" + receipts);
+        LOGGER.info("Receipt Details=" + receipts);
     }
 
     public List<Receipt> getReceipts() {

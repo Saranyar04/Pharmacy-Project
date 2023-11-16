@@ -1,7 +1,7 @@
 package users;
 
-import exceptions.LegalNameException;
-import exceptions.PhoneNoException;
+import exceptions.InvalidLegalNameException;
+import exceptions.InvalidPhoneNoException;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ public class Doctor extends Person {
 
     private String doctorType;
 
-    public Doctor(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String doctorType) throws LegalNameException, PhoneNoException {
+    public Doctor(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String doctorType) throws InvalidLegalNameException, InvalidPhoneNoException {
         super(legalName, gender, dateOfBirth, phoneNo, address, email);
         this.doctorType = doctorType;
     }
