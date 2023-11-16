@@ -20,18 +20,15 @@ public class Main {
 
             Pharmacy pharmacy = new Pharmacy();
             System.out.println(pharmacy.getPharmacyName());
-            Doctor doctor;
-            Employee employee;
-            Customer customer;
 
             try {
-                doctor = new Doctor("Seegol", "Male", new Date("3/12/1989"), "4132458796", "61 Riverview Ave, New Jersey", "seegol@yahoo.com,", "Surgeon");
+                Doctor doctor = new Doctor("Seegol", "Male", new Date("3/12/1989"), "4132458796", "61 Riverview Ave, New Jersey", "seegol@yahoo.com,", "Surgeon");
                 pharmacy.addDoctor(doctor);
 
-                employee = new Employee("Kim", "Female", new Date("04/02/2000"), "2349887453", "23 Riverview Dr, New Jersey", "kim@gmail.com", "pharmacist", 3000);
+                Employee employee = new Employee("Kim", "Female", new Date("04/02/2000"), "2349887453", "23 Riverview Dr, New Jersey", "kim@gmail.com", "pharmacist", 3000);
                 pharmacy.addEmployee(employee);
 
-                customer = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132246155", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", IInsuranceRate.PLAN_A, doctor);
+                Customer customer = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132246155", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", IInsuranceRate.PLAN_A, doctor);
                 pharmacy.addCustomer(customer);
 
             Medicine medicine = new Medicine("M453456", "Paracetamol", "Generic", "PNC Pharmacy", "Pain reliever", 12.30);
