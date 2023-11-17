@@ -18,7 +18,6 @@ public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main (String[] args) {
-
             Pharmacy pharmacy = new Pharmacy();
             MedicineCustomLinkedList<Medicine> medicineCustomLinkedList =  new MedicineCustomLinkedList<>();
             LOGGER.info(Pharmacy.getPharmacyName());
