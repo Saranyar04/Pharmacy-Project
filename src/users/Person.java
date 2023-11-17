@@ -4,10 +4,12 @@ import exceptions.InvalidLegalNameException;
 import exceptions.InvalidPhoneNoException;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.UUID;
 
 abstract public class Person {
 
+    private static HashMap<String,String> personMap = new HashMap<>();
     private String personId;
     private String legalName;
     private String gender;
@@ -30,6 +32,7 @@ abstract public class Person {
         this.phoneNo = phoneNo;
         this.address = address;
         this.email = email;
+        personMap.put(personId, legalName);
     }
 
     public String getLegalName() {

@@ -5,10 +5,17 @@ import interfaces.IPharmacy;
 import interfaces.ISale;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import pharmacy.*;
-import users.*;
+import pharmacy.Medicine;
+import pharmacy.Prescription;
+import pharmacy.Receipt;
+import users.Customer;
+import users.Doctor;
+import users.Employee;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
@@ -18,9 +25,9 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     private final List<Doctor> doctorList = new ArrayList<>();
     private final List<Employee> employeeList = new ArrayList<>();
     private final List<Medicine> medicineList = new ArrayList<>();
-    private final List<Prescription> prescriptionList = new ArrayList<>();
     private final List<Customer> customerList = new ArrayList<>();
     private List<Receipt> receipts = new ArrayList<>();
+    private Queue<Prescription> prescriptionQueue = new LinkedList<>();
 
     public void addMedicine(Medicine medicine) {
         medicineList.add(medicine);
@@ -35,7 +42,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void addPrescription(Prescription prescription) {
-        prescriptionList.add(prescription);
+        prescriptionQueue.add(prescription);
     }
 
     public void addCustomer(Customer customer) {
@@ -87,7 +94,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         return pharmacyName;
     }
 
-    public void setPharmacyName(String pharmacy_Name) {
-        pharmacyName = "FAid Pharmacy";
+    public static void setPharmacyName() {
+        Pharmacy.pharmacyName = "FAid Pharmacy";
     }
 }

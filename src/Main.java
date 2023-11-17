@@ -3,6 +3,7 @@ import interfaces.IInsuranceRate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pharmacy.Medicine;
+import pharmacy.MedicineCustomLinkedList;
 import pharmacy.Prescription;
 import users.Customer;
 import users.Doctor;
@@ -19,6 +20,7 @@ public class Main {
     public static void main (String[] args) {
 
             Pharmacy pharmacy = new Pharmacy();
+            MedicineCustomLinkedList<Medicine> medicineCustomLinkedList =  new MedicineCustomLinkedList<>();
             LOGGER.info(Pharmacy.getPharmacyName());
 
             try {
@@ -31,12 +33,12 @@ public class Main {
                 Customer customer = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132246155", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", IInsuranceRate.PLAN_A, doctor);
                 pharmacy.addCustomer(customer);
 
-            Medicine medicine = new Medicine("M453456", "Paracetamol", "Generic", "PNC Pharmacy", "Pain reliever", 12.30);
-            pharmacy.addMedicine(medicine);
+            Medicine medicine = new Medicine("M453456", "Paracetamol", Medicine.Type.OverTheCounter, "PNC Pharmacy", "Pain reliever", 12.30);
+            medicineCustomLinkedList.print();
 
             List<Medicine> medicines = new ArrayList<>();
-            medicines.add(new Medicine("M34528", "Tylenol", "Generic", "MDC laboratories", "Generic for age 13+", 23));
-            medicines.add(new Medicine("M34567", "Paracetamol", "Generic", "TI lab", "for ages 15+", 13));
+            medicines.add(new Medicine("M34528", "Tylenol", Medicine.Type.OverTheCounter, "MDC laboratories", "Generic for age 13+", 23));
+            medicines.add(new Medicine("M34567", "Paracetamol", Medicine.Type.Presription, "TI lab", "for ages 15+", 13));
 
             Prescription prescription = new Prescription(34512, medicines, 2, "Morning and Night after food", doctor, customer);
             pharmacy.addPrescription(prescription);
@@ -49,7 +51,6 @@ public class Main {
             } catch (InvalidPriceException | InvalidMedicineListException | InvalidInsuranceRateException | InvalidLegalNameException | InvalidPhoneNoException e) {
             LOGGER.error(e);
         }
-
     }
 }
 
