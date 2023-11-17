@@ -53,7 +53,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) throws InvalidInsuranceRateException {
         float sellTotal = 0;
         for (Medicine i : medicines) {
-            sellTotal = (float) (sellTotal + i.getPrice( ));
+            sellTotal = (float) (sellTotal + i.getPrice());
         }
 
         if (customer.getInsuranceRate() == IInsuranceRate.PLAN_A) {

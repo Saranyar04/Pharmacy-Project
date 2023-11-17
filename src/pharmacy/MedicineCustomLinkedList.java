@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 public class MedicineCustomLinkedList<T> {
 
     private static final Logger LOGGER = LogManager.getLogger(MedicineCustomLinkedList.class);
-
     private Node<T> head;
 
     private static class Node<T> {
