@@ -94,7 +94,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         return pharmacyName;
     }
 
-    public static void setPharmacyName() {
+    public void setPharmacyName(String Pharmacy_Name) {
         Pharmacy.pharmacyName = "FAid Pharmacy";
     }
 }
