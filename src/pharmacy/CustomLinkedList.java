@@ -3,20 +3,10 @@ package pharmacy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class MedicineCustomLinkedList<T> {
+public class CustomLinkedList<T> {
 
-    private static final Logger LOGGER = LogManager.getLogger(MedicineCustomLinkedList.class);
+    private static final Logger LOGGER = LogManager.getLogger(CustomLinkedList.class);
     private Node<T> head;
-
-    private static class Node<T> {
-        T data;
-        Node<T> next;
-
-        Node(T data) {
-            this.data = data;
-            this.next = null;
-        }
-    }
 
     public void add(T data) {
         Node<T> newNode = new Node<>(data);

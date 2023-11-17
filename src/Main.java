@@ -2,8 +2,8 @@ import exceptions.*;
 import interfaces.IInsuranceRate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pharmacy.CustomLinkedList;
 import pharmacy.Medicine;
-import pharmacy.MedicineCustomLinkedList;
 import pharmacy.Prescription;
 import users.Customer;
 import users.Doctor;
@@ -19,7 +19,7 @@ public class Main {
 
     public static void main (String[] args) {
             Pharmacy pharmacy = new Pharmacy();
-            MedicineCustomLinkedList<Medicine> medicineCustomLinkedList =  new MedicineCustomLinkedList<>();
+            CustomLinkedList<Medicine> customLinkedList =  new CustomLinkedList<>();
             LOGGER.info(Pharmacy.getPharmacyName());
 
             try {
@@ -33,8 +33,8 @@ public class Main {
                 pharmacy.addCustomer(customer);
 
             Medicine medicine = new Medicine("M453456", "Paracetamol", Medicine.Type.OverTheCounter, "PNC Pharmacy", "Pain reliever", 12.30);
-            medicineCustomLinkedList.add(medicine);
-            medicineCustomLinkedList.print();
+            customLinkedList.add(medicine);
+            customLinkedList.print();
 
             List<Medicine> medicines = new ArrayList<>();
             medicines.add(new Medicine("M34528", "Tylenol", Medicine.Type.OverTheCounter, "MDC laboratories", "Generic for age 13+", 23));

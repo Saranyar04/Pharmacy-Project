@@ -12,14 +12,12 @@ import users.Customer;
 import users.Doctor;
 import users.Employee;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
+    private static HashMap<String,String> personMap = new HashMap<>();
     private static String pharmacyName;
     private final static double TAX = 7.5;
     private final List<Doctor> doctorList = new ArrayList<>();
@@ -35,10 +33,12 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
     public void addDoctor(Doctor doctor) {
         doctorList.add(doctor);
+        personMap.put(doctor.getPersonId(), doctor.getLegalName());
     }
 
     public void addEmployee(Employee employee) {
         employeeList.add(employee);
+        personMap.put(employee.getPersonId(), employee.getPersonId());
     }
 
     public void addPrescription(Prescription prescription) {
@@ -47,6 +47,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
     public void addCustomer(Customer customer) {
         customerList.add(customer);
+        personMap.put(customer.getPersonId(), customer.getLegalName());
     }
 
     @Override
@@ -94,7 +95,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         return pharmacyName;
     }
 
-    public void setPharmacyName(String Pharmacy_Name) {
+    public void setPharmacyName(String pharmacyName) {
         Pharmacy.pharmacyName = "FAid Pharmacy";
     }
 }
