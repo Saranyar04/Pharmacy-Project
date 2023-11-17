@@ -34,6 +34,7 @@ public class Main {
                 pharmacy.addCustomer(customer);
 
             Medicine medicine = new Medicine("M453456", "Paracetamol", Medicine.Type.OverTheCounter, "PNC Pharmacy", "Pain reliever", 12.30);
+            medicineCustomLinkedList.add(medicine);
             medicineCustomLinkedList.print();
 
             List<Medicine> medicines = new ArrayList<>();
