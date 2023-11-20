@@ -3,7 +3,7 @@ package pharmacy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class CustomLinkedList<T> {
+public class CustomLinkedList<T> extends Node<T> {
 
     private static final Logger LOGGER = LogManager.getLogger(CustomLinkedList.class);
     private Node<T> head;
@@ -15,34 +15,34 @@ public class CustomLinkedList<T> {
             return;
         }
         Node<T> current = head;
-        while (current.next != null) {
-            current = current.next;
+        while (current.getNext() != null) {
+            current = current.getNext();
         }
-        current.next = newNode;
+        current.setNext(newNode);
     }
 
     public void remove(T data) {
         if (head == null) {
             return;
         }
-        if (head.data.equals(data)) {
-            head = head.next;
+        if (head.getData().equals(data)) {
+            head = head.getNext();
             return;
         }
         Node<T> current = head;
-        while (current.next != null && !current.next.data.equals(data)) {
-            current = current.next;
+        while (current.getNext() != null && !current.getNext().equals(data)) {
+            current = current.getNext();
         }
-        if (current.next != null) {
-            current.next = current.next.next;
+        if (current.getNext() != null) {
+            current.setNext(current.getNext().getNext());
         }
     }
 
     public void print() {
         Node<T> current = head;
         while (current != null) {
-            LOGGER.info(current.data + " ");
-            current = current.next;
+            LOGGER.info(current.getData() + " ");
+            current = current.getNext();
         }
     }
 }

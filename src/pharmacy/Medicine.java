@@ -6,14 +6,12 @@ public class Medicine {
 
     private String medicineId;
     private String name;
-    public enum Type{
-        Presription, OverTheCounter;}
-    private Type type;
+    private EnumMedicineType type;
     private String company;
     private String description;
     private double price;
 
-    public Medicine(String medicineId, String name, Type type , String company, String description, double price) throws InvalidPriceException {
+    public Medicine(String medicineId, String name, EnumMedicineType type, String company, String description, double price) throws InvalidPriceException {
         if (price <= 0) {
             throw new InvalidPriceException("Price is invalid.");
         }

@@ -17,7 +17,7 @@ import java.util.*;
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
-    private static HashMap<String,String> personMap = new HashMap<>();
+    private static HashMap<String, List<Object>> personMap = new HashMap<>();
     private static String pharmacyName;
     private final static double TAX = 7.5;
     private final List<Doctor> doctorList = new ArrayList<>();
@@ -32,13 +32,11 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void addDoctor(Doctor doctor) {
-        doctorList.add(doctor);
-        personMap.put(doctor.getPersonId(), doctor.getLegalName());
+        personMap.put("Doctor", Collections.singletonList(doctorList.add(doctor)));
     }
 
     public void addEmployee(Employee employee) {
-        employeeList.add(employee);
-        personMap.put(employee.getPersonId(), employee.getPersonId());
+        personMap.put("Employee", Collections.singletonList(employeeList.add(employee)));
     }
 
     public void addPrescription(Prescription prescription) {
@@ -46,8 +44,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void addCustomer(Customer customer) {
-        customerList.add(customer);
-        personMap.put(customer.getPersonId(), customer.getLegalName());
+        personMap.put("Customer", Collections.singletonList(customerList.add(customer)));
     }
 
     @Override
