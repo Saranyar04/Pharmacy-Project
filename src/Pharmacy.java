@@ -11,19 +11,17 @@ import pharmacy.Receipt;
 import users.Customer;
 import users.Doctor;
 import users.Employee;
+import users.Person;
 
 import java.util.*;
 
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
-    private static HashMap<String, List<Object>> personMap = new HashMap<>();
+    private static HashMap<String, List<Person>> personMap = new HashMap<>();
     private static String pharmacyName;
     private final static double TAX = 7.5;
-    private final List<Doctor> doctorList = new ArrayList<>();
-    private final List<Employee> employeeList = new ArrayList<>();
     private final List<Medicine> medicineList = new ArrayList<>();
-    private final List<Customer> customerList = new ArrayList<>();
     private List<Receipt> receipts = new ArrayList<>();
     private Queue<Prescription> prescriptionQueue = new LinkedList<>();
 
@@ -32,11 +30,11 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void addDoctor(Doctor doctor) {
-        personMap.put("Doctor", Collections.singletonList(doctorList.add(doctor)));
+        personMap.put("Doctor", Collections.singletonList(doctor));
     }
 
     public void addEmployee(Employee employee) {
-        personMap.put("Employee", Collections.singletonList(employeeList.add(employee)));
+        personMap.put("Employee", Collections.singletonList(employee));
     }
 
     public void addPrescription(Prescription prescription) {
@@ -44,7 +42,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void addCustomer(Customer customer) {
-        personMap.put("Customer", Collections.singletonList(customerList.add(customer)));
+        personMap.put("Customer", Collections.singletonList(customer));
     }
 
     @Override
