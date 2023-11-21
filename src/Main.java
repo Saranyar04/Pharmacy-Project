@@ -29,10 +29,10 @@ public class Main {
             Employee employee = new Employee("Kim", "Female", new Date("04/02/2000"), "2349887453", "23 Riverview Dr, New Jersey", "kim@gmail.com", "pharmacist", 3000);
             pharmacy.addEmployee(employee);
 
-            Customer customer = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132246155", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", IInsuranceRate.NO_INSURANCE, doctor);
-            pharmacy.addCustomer(customer);
-            Customer customer1 = new Customer("Lillana", "Female", new Date("04/11/2020"), "4132246155", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", IInsuranceRate.NO_INSURANCE, doctor);
-            pharmacy.addCustomer(customer1);
+            Customer lilly = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132246155", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", IInsuranceRate.NO_INSURANCE, doctor);
+            pharmacy.addCustomer(lilly);
+            Customer lilyana = new Customer("Lilyana", "Female", new Date("04/11/2020"), "4132246155", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", IInsuranceRate.NO_INSURANCE, doctor);
+            pharmacy.addCustomer(lilyana);
 
             Medicine medicine = new Medicine("M453456", "Paracetamol", MedicineType.OVERTHECOUNTER, "PNC Pharmacy", "Pain reliever", 12.30);
             CustomLinkedList<Medicine> customLinkedList = new CustomLinkedList<>();
@@ -43,10 +43,10 @@ public class Main {
             medicines.add(new Medicine("M34528", "Tylenol", MedicineType.PRESCRIPTION, "MDC laboratories", "Generic for age 13+", 23));
             medicines.add(new Medicine("M34567", "Paracetamol", MedicineType.OVERTHECOUNTER, "TI lab", "for ages 15+", 13));
 
-            Prescription prescription = new Prescription(34512, medicines, 2, "Morning and Night after food", doctor, customer);
+            Prescription prescription = new Prescription(34512, medicines, 2, "Morning and Night after food", doctor, lilly);
             pharmacy.addPrescription(prescription);
 
-            pharmacy.calculateSale(employee, customer, medicines);
+            pharmacy.calculateSale(employee, lilly, medicines);
             pharmacy.printPersonMap();
             LOGGER.info(pharmacy.getReceipts());
             LOGGER.info(prescription);
