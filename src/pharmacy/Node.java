@@ -2,13 +2,13 @@ package pharmacy;
 
 public class Node<T> {
 
-        private T data;
-        private Node<T> next;
+    private T data;
+    private Node<T> next;
 
-        Node(T data) {
+    Node(T data) {
             this.data = data;
             this.next = null;
-        }
+    }
 
     public Node() {
     }

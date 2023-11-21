@@ -3,7 +3,7 @@ import interfaces.IInsuranceRate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pharmacy.CustomLinkedList;
-import pharmacy.EnumMedicineType;
+import pharmacy.MedicineType;
 import pharmacy.Medicine;
 import pharmacy.Prescription;
 import users.Customer;
@@ -32,14 +32,14 @@ public class Main {
                 Customer customer = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132246155", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", IInsuranceRate.PLAN_A, doctor);
                 pharmacy.addCustomer(customer);
 
-            Medicine medicine = new Medicine("M453456", "Paracetamol", EnumMedicineType.OVERTHECOUNTER, "PNC Pharmacy", "Pain reliever", 12.30);
+            Medicine medicine = new Medicine("M453456", "Paracetamol", MedicineType.OVERTHECOUNTER, "PNC Pharmacy", "Pain reliever", 12.30);
             CustomLinkedList<Medicine> customLinkedList =  new CustomLinkedList<>();
             customLinkedList.add(medicine);
             customLinkedList.print();
 
             List<Medicine> medicines = new ArrayList<>();
-            medicines.add(new Medicine("M34528", "Tylenol", EnumMedicineType.PRESCRIPTION, "MDC laboratories", "Generic for age 13+", 23));
-            medicines.add(new Medicine("M34567", "Paracetamol", EnumMedicineType.OVERTHECOUNTER, "TI lab", "for ages 15+", 13));
+            medicines.add(new Medicine("M34528", "Tylenol", MedicineType.PRESCRIPTION, "MDC laboratories", "Generic for age 13+", 23));
+            medicines.add(new Medicine("M34567", "Paracetamol", MedicineType.OVERTHECOUNTER, "TI lab", "for ages 15+", 13));
 
             Prescription prescription = new Prescription(34512, medicines, 2, "Morning and Night after food", doctor, customer);
             pharmacy.addPrescription(prescription);

@@ -1,6 +1,6 @@
 package pharmacy;
 
-public enum EnumMedicineType {
+public enum MedicineType {
     PRESCRIPTION,
     OVERTHECOUNTER;
 }
