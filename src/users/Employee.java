@@ -35,4 +35,16 @@ public class Employee extends Person {
     final void printEmployeeDetails() {
         System.out.println("Employee Information : " + "Legal Name : " + super.getLegalName() + "Phone No : "  + super.getPhoneNo() + "Address : " + super.getAddress());
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" + "Legal Name= " + super.getLegalName()
+                + "Gender='" + super.getGender()
+                + "Date of Birth='" + super.getDateOfBirth()
+                + "Phone No='" + super.getPhoneNo()
+                + "Address=" + super.getAddress() +
+                "designation='" + designation + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }
