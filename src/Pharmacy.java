@@ -30,13 +30,13 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void addDoctor(Doctor doctor) {
-        if(!personMap.containsKey("Doctor"))
+        if (!personMap.containsKey("Doctor"))
             personMap.put("Doctor", new ArrayList<>());
         personMap.get("Doctor").add(doctor);
     }
 
     public void addEmployee(Employee employee) {
-        if(!personMap.containsKey("Employee"))
+        if (!personMap.containsKey("Employee"))
             personMap.put("Employee", new ArrayList<>());
         personMap.get("Employee").add(employee);
     }
@@ -46,7 +46,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void addCustomer(Customer customer) {
-        if(!personMap.containsKey("Customer"))
+        if (!personMap.containsKey("Customer"))
             personMap.put("Customer", new ArrayList<>());
         personMap.get("Customer").add(customer);
     }
