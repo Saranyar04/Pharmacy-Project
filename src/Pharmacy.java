@@ -100,7 +100,9 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         Pharmacy.pharmacyName = "FAid Pharmacy";
     }
     public void printPersonMap()
-    {
-        LOGGER.info(personMap);
-    }
+        {
+            for (Map.Entry<String, List<Person>> entry : personMap.entrySet()) {
+                LOGGER.info(entry.getKey() + ":" + entry.getValue());
+            }
+         }
 }
