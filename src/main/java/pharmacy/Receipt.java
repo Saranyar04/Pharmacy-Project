@@ -1,12 +1,15 @@
 package pharmacy;
 
 import interfaces.IPrint;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import users.Customer;
 import users.Employee;
 import java.util.List;
 
 public class Receipt implements IPrint {
 
+    private static final Logger LOGGER = LogManager.getLogger(Receipt.class);
     private Customer saleCustomer;
     private Employee saleEmployee;
     private List<Medicine> medicines;
@@ -45,8 +48,8 @@ public class Receipt implements IPrint {
 
     @Override
     public void printReceipt(Receipt receipt) {
-        System.out.println("Receipt Details");
-        System.out.println("Customer Name : " + saleCustomer.getLegalName() + " Employee Name : " + saleEmployee.getLegalName() + " Receipt Total : " + total);
+        LOGGER.info("Receipt Details");
+        LOGGER.info(toString());
     }
 
     @Override
