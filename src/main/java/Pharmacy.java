@@ -1,4 +1,3 @@
-import exceptions.InvalidInsuranceRateException;
 import interfaces.IInsuranceRate;
 import interfaces.IPerson;
 import interfaces.IPharmacy;
@@ -52,7 +51,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     @Override
-    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) throws InvalidInsuranceRateException {
+    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) {
         float sellTotal = 0;
         for (Medicine i : medicines) {
             sellTotal = (float) (sellTotal + i.getPrice());
