@@ -20,9 +20,9 @@ public class Main {
 
     public static void main(String[] args) {
         Pharmacy pharmacy = new Pharmacy();
-        LOGGER.info(Pharmacy.getPharmacyName());
 
         try {
+            LOGGER.info(Pharmacy.getPharmacyName());
             Doctor doctor = new Doctor("Seegol", "Male", new Date("3/12/1989"), "4132458796", "61 Riverview Ave, New Jersey", "seegol@yahoo.com,", "Surgeon");
             pharmacy.addDoctor(doctor);
 
