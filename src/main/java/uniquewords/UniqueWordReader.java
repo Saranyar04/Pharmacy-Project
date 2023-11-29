@@ -1,0 +1,33 @@
+package uniquewords;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueWordReader {
+
+    private static final Logger LOGGER = LogManager.getLogger(UniqueWordReader.class);
+
+    public void uniqueWords() {
+        File file = new File("Description.txt");
+        Set<String> uniqueWords = new HashSet<>( );
+        try {
+            String content = FileUtils.readFileToString(file, "UTF-8");
+            content = content.replaceAll("[^a-zA-Z)-9_-]", "");
+            String[] words = StringUtils.split(content);
+            for (int i = 0; i < words.length; i++) {
+                uniqueWords.add(words[i]);
+            }
+            FileUtils.write(file, "\n Unique Words in the file are : " + uniqueWords.toString(), "UTF-8", true);
+        } catch (IOException e) {
+            LOGGER.error(e);
+        }
+    }
+}
+

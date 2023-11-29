@@ -6,10 +6,12 @@ import customlinkedlist.CustomLinkedList;
 import pharmacy.MedicineType;
 import pharmacy.Medicine;
 import pharmacy.Prescription;
+import uniquewords.UniqueWordReader;
 import users.Customer;
 import users.Doctor;
 import users.Employee;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +20,7 @@ public class Main {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Pharmacy pharmacy = new Pharmacy();
         LOGGER.info(Pharmacy.getPharmacyName());
 
@@ -56,6 +58,8 @@ public class Main {
                  InvalidLegalNameException | InvalidPhoneNoException e) {
             LOGGER.error(e);
         }
+        UniqueWordReader uniqueWordReader = new UniqueWordReader();
+        uniqueWordReader.uniqueWords();
     }
 }
 
