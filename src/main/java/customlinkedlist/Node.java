@@ -1,4 +1,4 @@
-package pharmacy;
+package customlinkedlist;
 
 public class Node<T> {
 

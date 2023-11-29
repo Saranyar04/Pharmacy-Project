@@ -16,16 +16,6 @@ public class Customer extends Person {
         this.doctor = doctor;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" + "Person ID=" + super.getPersonId() +  " Legal Name='" + super.getLegalName()
-                + " Gender='" + super.getGender()
-                + " Date of Birth='" + super.getDateOfBirth()
-                + " Phone No='" + super.getPhoneNo()
-                + " Address=" + super.getAddress() +
-                '}';
-    }
-
     public int getInsuranceRate() {
         return insuranceRate;
     }
@@ -40,5 +30,15 @@ public class Customer extends Person {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" + "Person ID=" + super.getPersonId() +  " Legal Name='" + super.getLegalName()
+                + " Gender='" + super.getGender()
+                + " Date of Birth='" + super.getDateOfBirth()
+                + " Phone No='" + super.getPhoneNo()
+                + " Address=" + super.getAddress() +
+                '}';
     }
 }

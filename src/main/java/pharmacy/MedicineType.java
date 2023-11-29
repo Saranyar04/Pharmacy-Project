@@ -2,5 +2,5 @@ package pharmacy;
 
 public enum MedicineType {
     PRESCRIPTION,
-    OVERTHECOUNTER;
+    OVER_THE_COUNTER;
 }

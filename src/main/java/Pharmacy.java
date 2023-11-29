@@ -1,4 +1,3 @@
-import exceptions.InvalidInsuranceRateException;
 import interfaces.IInsuranceRate;
 import interfaces.IPerson;
 import interfaces.IPharmacy;
@@ -52,35 +51,19 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     @Override
-    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) throws InvalidInsuranceRateException {
+    public void calculateSale(Employee employee, Customer customer, List<Medicine> medicines) {
         float sellTotal = 0;
         for (Medicine i : medicines) {
             sellTotal = (float) (sellTotal + i.getPrice());
         }
-        float paidByInsurance, paidByCustomer;
-        if (customer.getInsuranceRate() == IInsuranceRate.PLAN_A) {
-            paidByInsurance = sellTotal * ((float) IInsuranceRate.PLAN_A / 100);
-            paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (TAX / 100)));
-            Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
-            receipts.add(insuranceSaleReceipt);
-        } else if (customer.getInsuranceRate() == IInsuranceRate.PLAN_B) {
-            paidByInsurance = sellTotal * ((float) IInsuranceRate.PLAN_B / 100);
-            paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (TAX / 100)));
-            Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
-            receipts.add(insuranceSaleReceipt);
-        } else if (customer.getInsuranceRate() == IInsuranceRate.PLAN_C) {
-            paidByInsurance = sellTotal * ((float) IInsuranceRate.PLAN_C / 100);
-            paidByCustomer = (float) ((sellTotal - paidByInsurance) + (sellTotal * (TAX / 100)));
-            Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
-            receipts.add(insuranceSaleReceipt);
-        } else if (customer.getInsuranceRate() == IInsuranceRate.NO_INSURANCE) {
+        float paidByCustomer;
+        if (customer.getInsuranceRate() == IInsuranceRate.NO_INSURANCE) {
             paidByCustomer = (float) ((sellTotal) + (sellTotal * (TAX / 100)));
-            Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
-            receipts.add(insuranceSaleReceipt);
+        } else {
+            paidByCustomer = (float) (sellTotal - (sellTotal * customer.getInsuranceRate() / 100) + (sellTotal * (TAX / 100)));
         }
-        else {
-            throw new InvalidInsuranceRateException("Invalid Insurance type");
-        }
+        Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
+        receipts.add(insuranceSaleReceipt);
         LOGGER.info("Receipt Details=" + receipts);
     }
 
@@ -101,8 +84,8 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void printPersonMap() {
-        for (Map.Entry<String, List<Person>> entry : personMap.entrySet( )) {
-            LOGGER.info(entry.getKey( ) + ":" + entry.getValue( ));
+        for (Map.Entry<String, List<Person>> entry : personMap.entrySet()) {
+            LOGGER.info(entry.getKey() + ":" + entry.getValue());
         }
     }
 }
