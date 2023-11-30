@@ -1,11 +1,15 @@
-import exceptions.*;
+import customlinkedlist.CustomLinkedList;
+import exceptions.InvalidLegalNameException;
+import exceptions.InvalidMedicineListException;
+import exceptions.InvalidPhoneNoException;
+import exceptions.InvalidPriceException;
 import interfaces.IInsuranceRate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import customlinkedlist.CustomLinkedList;
-import pharmacy.MedicineType;
 import pharmacy.Medicine;
+import pharmacy.MedicineType;
 import pharmacy.Prescription;
+import uniquewords.UniqueWordReader;
 import users.Customer;
 import users.Doctor;
 import users.Employee;
@@ -56,6 +60,8 @@ public class Main {
                  InvalidLegalNameException | InvalidPhoneNoException e) {
             LOGGER.error(e);
         }
+        UniqueWordReader uniqueWordReader = new UniqueWordReader();
+        uniqueWordReader.uniqueWords();
     }
 }
 
