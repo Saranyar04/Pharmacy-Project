@@ -20,7 +20,6 @@ public class UniqueWordReader {
         try {
             File file = new File(path.getFile());
             Set<String> uniqueWords = new HashSet<>();
-
             String content = FileUtils.readFileToString(file, "UTF-8");
             content = content.replaceAll("[,.]", "");
             String[] words = StringUtils.split(content);
