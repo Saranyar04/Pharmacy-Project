@@ -15,7 +15,7 @@ public class UniqueWordReader {
     private static final Logger LOGGER = (Logger) LogManager.getLogger(UniqueWordReader.class);
 
     public void uniqueWords() {
-        File file = new File("C:\\Users\\HP\\IdeaProjects\\Pharmacy Project\\src\\main\\resources\\Description.txt");
+        File file = new File("main\\resources\\Description.txt");
         Set<String> uniqueWords = new HashSet<>();
         try {
             String content = FileUtils.readFileToString(file, "UTF-8");
