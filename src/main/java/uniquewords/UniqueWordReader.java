@@ -17,12 +17,11 @@ public class UniqueWordReader {
     private static final Logger LOGGER = (Logger) LogManager.getLogger(UniqueWordReader.class);
 
     public void uniqueWords() {
-        //File file = new File("main\\resources\\pharmacy.txt");
         URL path = Main.class.getClassLoader().getResource("pharmacy.txt");
         System.out.println(path);
         try {
-        File file = new File(path.getFile());
-        Set<String> uniqueWords = new HashSet<>();
+            File file = new File(path.getFile());
+            Set<String> uniqueWords = new HashSet<>();
 
             String content = FileUtils.readFileToString(file, "UTF-8");
             content = content.replaceAll("[,.]", "");
