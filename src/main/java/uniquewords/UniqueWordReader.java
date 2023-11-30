@@ -1,6 +1,5 @@
 package uniquewords;
 
-import com.sun.tools.javac.Main;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -17,8 +16,7 @@ public class UniqueWordReader {
     private static final Logger LOGGER = (Logger) LogManager.getLogger(UniqueWordReader.class);
 
     public void uniqueWords() {
-        URL path = Main.class.getClassLoader().getResource("pharmacy.txt");
-        System.out.println(path);
+        URL path = this.getClass().getClassLoader().getResource("pharmacy.txt");
         try {
             File file = new File(path.getFile());
             Set<String> uniqueWords = new HashSet<>();
