@@ -1,17 +1,19 @@
-import exceptions.*;
+import customlinkedlist.CustomLinkedList;
+import exceptions.InvalidLegalNameException;
+import exceptions.InvalidMedicineListException;
+import exceptions.InvalidPhoneNoException;
+import exceptions.InvalidPriceException;
 import interfaces.IInsuranceRate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import customlinkedlist.CustomLinkedList;
-import pharmacy.MedicineType;
 import pharmacy.Medicine;
+import pharmacy.MedicineType;
 import pharmacy.Prescription;
 import uniquewords.UniqueWordReader;
 import users.Customer;
 import users.Doctor;
 import users.Employee;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +22,7 @@ public class Main {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Pharmacy pharmacy = new Pharmacy();
         LOGGER.info(Pharmacy.getPharmacyName());
 
