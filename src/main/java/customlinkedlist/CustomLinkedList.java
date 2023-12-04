@@ -40,6 +40,7 @@ public class CustomLinkedList<T> {
 
     public void print() {
         Node<T> current = head;
+
         while (current != null) {
             LOGGER.info(current.getData() + " ");
             current = current.getNext();
