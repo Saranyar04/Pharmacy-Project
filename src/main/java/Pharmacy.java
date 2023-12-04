@@ -92,7 +92,6 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void printInfo() {
-
         LOGGER.info("Pharmacy Name : " + PharmacyDetails.NAME.getPharmacyDetails());
         LOGGER.info("Pharmacy Address : " + PharmacyDetails.ADDRESS.getPharmacyDetails());
         LOGGER.info(PharmacyDetails.STATE.getPharmacyDetails());

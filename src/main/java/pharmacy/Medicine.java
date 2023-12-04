@@ -1,5 +1,6 @@
 package pharmacy;
 
+import enums.CompanyName;
 import enums.MedicineType;
 import exceptions.InvalidPriceException;
 
@@ -10,11 +11,11 @@ public class Medicine {
     private String medicineId;
     private String name;
     private MedicineType type;
-    private String company;
+    private CompanyName company;
     private String description;
     private double price;
 
-    public Medicine(String medicineId, String name, MedicineType type, String company, String description, double price) throws InvalidPriceException {
+    public Medicine(String medicineId, String name, MedicineType type, CompanyName company, String description, double price) throws InvalidPriceException {
         if (price <= 0) {
             throw new InvalidPriceException("Price is invalid.");
         }
@@ -47,11 +48,11 @@ public class Medicine {
         this.name = name;
     }
 
-    public String getCompany() {
+    public CompanyName getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(CompanyName company) {
         this.company = company;
     }
 

@@ -1,9 +1,8 @@
 package interfaces;
 
 @FunctionalInterface
-
-public interface Supplier<T> {
+public interface ISupplier<T> {
 
     T get();
-    
+
 }

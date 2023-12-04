@@ -15,7 +15,7 @@ public class Receipt implements IPrint {
     private static final Logger LOGGER = LogManager.getLogger(Receipt.class);
     private Customer saleCustomer;
     private Employee saleEmployee;
-    LocalDateTime saleDate;
+    private LocalDateTime saleDate;
     private List<Medicine> medicines;
     private float total;
 
