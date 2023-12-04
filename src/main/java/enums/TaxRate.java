@@ -1,6 +1,7 @@
 package enums;
 
 public enum TaxRate {
+
     TAX(7.5);
 
     private final double taxRate;

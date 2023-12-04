@@ -1,6 +1,7 @@
 package enums;
 
 public enum InsuranceRate {
+
     PLAN_A(10),
     PLAN_B(20),
     PLAN_C(30),
