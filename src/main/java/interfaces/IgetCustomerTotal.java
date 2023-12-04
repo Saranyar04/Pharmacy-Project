@@ -1,7 +1,7 @@
 package interfaces;
 
 @FunctionalInterface
-public interface IgetCustomerTotal {
+public interface IGetCustomerTotal {
 
     void getCustomerTotal();
 

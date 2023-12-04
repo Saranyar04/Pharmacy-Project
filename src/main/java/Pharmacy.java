@@ -61,7 +61,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
             paidByCustomer = (float) (sellTotal - (sellTotal * customer.getInsuranceRate().getRate() / 100) + (sellTotal * (TaxRate.TAX.getTaxRate() / 100)));
         Receipt insuranceSaleReceipt = new Receipt(customer, employee, medicines, paidByCustomer);
         receipts.add(insuranceSaleReceipt);
-        IgetCustomerTotal igetCustomerTotal = () -> LOGGER.info("Customer Total = " + paidByCustomer);
+        IGetCustomerTotal igetCustomerTotal = () -> LOGGER.info("Customer Total = " + paidByCustomer);
         igetCustomerTotal.getCustomerTotal();
     }
 

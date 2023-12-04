@@ -1,7 +1,7 @@
 package pharmacy;
 
 import interfaces.IPrint;
-import interfaces.Supplier;
+import interfaces.ISupplier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import users.Customer;
@@ -23,7 +23,7 @@ public class Receipt implements IPrint {
         this.medicines = medicines;
         this.saleCustomer = saleCustomer;
         this.saleEmployee = saleEmployee;
-        Supplier<LocalDateTime> supplier = () -> LocalDateTime.now();
+        ISupplier<LocalDateTime> supplier = () -> LocalDateTime.now();
         this.saleDate = supplier.get();
         this.total = total;
     }
