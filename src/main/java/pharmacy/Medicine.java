@@ -1,6 +1,9 @@
 package pharmacy;
 
+import enums.MedicineType;
 import exceptions.InvalidPriceException;
+
+import java.util.function.BiFunction;
 
 public class Medicine {
 
@@ -16,7 +19,8 @@ public class Medicine {
             throw new InvalidPriceException("Price is invalid.");
         }
         this.medicineId = medicineId;
-        this.name = name;
+        BiFunction<String, String, String> concatenate = (s1, s2) -> s1 + " " + s2;
+        this.name = concatenate.apply(type.getMedicineType(), name);
         this.type = type;
         this.company = company;
         this.description = description;

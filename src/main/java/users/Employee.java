@@ -1,5 +1,6 @@
 package users;
 
+import enums.EmployeeType;
 import exceptions.InvalidLegalNameException;
 import exceptions.InvalidPhoneNoException;
 
@@ -8,11 +9,13 @@ import java.util.Date;
 public class Employee extends Person {
 
     private String designation;
+    private EmployeeType employeeType;
     private float salary;
 
-    public Employee(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String designation, float salary) throws InvalidLegalNameException, InvalidPhoneNoException {
+    public Employee(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, String designation, EmployeeType employeeType, int salary) throws InvalidLegalNameException, InvalidPhoneNoException {
         super (legalName, gender, dateOfBirth, phoneNo, address, email);
         this.designation = designation;
+        this.employeeType = employeeType;
         this.salary = salary;
     }
 
@@ -44,6 +47,7 @@ public class Employee extends Person {
                 + "Phone No='" + super.getPhoneNo()
                 + "Address=" + super.getAddress() +
                 "designation='" + designation + '\'' +
+                "employee type=" + employeeType + '\'' +
                 ", salary=" + salary +
                 '}';
     }

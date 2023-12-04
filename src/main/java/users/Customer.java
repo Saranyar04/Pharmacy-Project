@@ -2,26 +2,27 @@ package users;
 
 import exceptions.InvalidLegalNameException;
 import exceptions.InvalidPhoneNoException;
+import enums.InsuranceRate;
 
 import java.util.Date;
 
 public class Customer extends Person {
 
-    private int insuranceRate;
+    private InsuranceRate rate;
     private Doctor doctor;
 
-    public Customer(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, int insuranceRate, Doctor doctor) throws InvalidLegalNameException, InvalidPhoneNoException {
+    public Customer(String legalName, String gender, Date dateOfBirth, String phoneNo, String address, String email, InsuranceRate rate, Doctor doctor) throws InvalidLegalNameException, InvalidPhoneNoException {
         super(legalName, gender, dateOfBirth, phoneNo, address, email);
-        this.insuranceRate = insuranceRate;
+        this.rate = rate;
         this.doctor = doctor;
     }
 
-    public int getInsuranceRate() {
-        return insuranceRate;
+    public InsuranceRate getInsuranceRate() {
+        return rate;
     }
 
-    public void setInsuranceRate(int insuranceRate) {
-        this.insuranceRate = insuranceRate;
+    public void setInsuranceRate(InsuranceRate rate) {
+        this.rate = rate;
     }
 
     public Doctor getDoctor() {
