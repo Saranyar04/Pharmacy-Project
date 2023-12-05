@@ -5,13 +5,13 @@ public enum EmployeeType {
     PHARMACIST("Pharmacist"),
     CASHIER("Cashier");
 
-    private final String employeetype;
+    private final String employeeType;
 
     EmployeeType(String employeetype) {
-        this.employeetype = employeetype;
+        this.employeeType = employeetype;
     }
 
-    public String getEmployeetype() {
-        return employeetype;
+    public String getEmployeeType() {
+        return employeeType;
     }
 }
