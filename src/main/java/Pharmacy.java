@@ -70,7 +70,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void printReceipts() {
-        ListPrinter printer = new ListPrinter(receipts);
+        new ListPrinter(receipts);
         LOGGER.info("Max Total " + receipts.stream().map(r -> r.getTotal()).max(Comparator.comparing(Float :: valueOf)).get());
     }
 

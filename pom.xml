@@ -39,21 +39,6 @@
             <version>2.13.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.sonatype.aether</groupId>
-            <artifactId>aether-spi</artifactId>
-            <version>1.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.sisu</groupId>
-            <artifactId>org.eclipse.sisu.inject</artifactId>
-            <version>0.3.5</version>
-        </dependency>
-        <dependency>
-            <groupId>dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>1.1</version>
-        </dependency>
     </dependencies>
 
     <build>
