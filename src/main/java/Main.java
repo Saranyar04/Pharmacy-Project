@@ -56,6 +56,8 @@ public class Main {
                 Method addemployee = pharmacy1.getDeclaredMethod("addEmployee", Employee.class);
                 addemployee.setAccessible(true);
                 addemployee.invoke(new Pharmacy(), employee);
+                Employee employeeDelaina = new Employee("Delaina", "Female", new Date("04/05/1990"), "2349887768", "83 Riverview Dr, New Jersey", "delaina@gmail.com", "pharmacist", EmployeeType.PHARMACIST, 3000);
+                addemployee.invoke(new Pharmacy(), employee);
 
                 Customer lilly = new Customer("Lilly", "Female", new Date("04/11/2020"), "4132246155", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", NO_INSURANCE, doctor);
                 Method addcustomer = pharmacy1.getDeclaredMethod("addCustomer", Customer.class);
@@ -82,7 +84,7 @@ public class Main {
                 pharmacy.addPrescription(lilyanareceipt);
 
                 pharmacy.calculateSale(employee, lilly, medicines);
-                pharmacy.calculateSale(employee, lilyana, medicines);
+                pharmacy.calculateSale(employeeDelaina, lilyana, medicines);
                 pharmacy.printPersonMap();
                 pharmacy.printPrescriptionQueue();
                 LOGGER.info(doctor);
@@ -90,6 +92,8 @@ public class Main {
                 pharmacy.getCustomerReceipts("Lilly");
                 pharmacy.viewCompanyMedicineList();
                 pharmacy.viewMedicineNames();
+                pharmacy.printSaleEmployeeList();
+                pharmacy.printSortedReceiptTotal();
             } catch (InvalidPriceException | InvalidMedicineListException |
                      InvalidLegalNameException | InvalidPhoneNoException |
                      NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {

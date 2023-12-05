@@ -1,6 +1,9 @@
 import enums.PharmacyDetails;
 import enums.TaxRate;
-import interfaces.*;
+import interfaces.IGetCustomerTotal;
+import interfaces.IPerson;
+import interfaces.IPharmacy;
+import interfaces.ISale;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pharmacy.Medicine;
@@ -68,7 +71,6 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
     public void printReceipts() {
         ListPrinter printer = new ListPrinter(receipts);
-        //receipts.stream().forEach(r -> r.getTotal()).(Comparator.comparing(Double :: )).get
         LOGGER.info("Max Total " + receipts.stream().map(r -> r.getTotal()).max(Comparator.comparing(Float :: valueOf)).get());
     }
 
@@ -101,6 +103,12 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         ListPrinter printer = new ListPrinter(customerReceipt);
     }
 
+    public void printSaleEmployeeList() {
+        //To store all employees who made a sale in ana array toArray().
+        String[] salesEmployees = receipts.stream().map(r -> r.getSaleEmployee().getLegalName()).toArray(String[] :: new);
+        Arrays.stream(salesEmployees).forEach(s -> LOGGER.info(s));
+    }
+
     public void viewCompanyMedicineList() {
         medicineList.stream().filter(med -> med.getCompany() == PNC_PHARMACY).filter(med -> med.getType() == OVER_THE_COUNTER).forEach(med -> LOGGER.info(med));
     }
@@ -108,5 +116,10 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     public void viewMedicineNames() {
         List<String> medName = medicineList.stream().map(r -> r.getName()).collect(Collectors.toList());
         medName.forEach(n -> LOGGER.info(n));
+    }
+
+    public void printSortedReceiptTotal() {
+        //Uses sorted()
+        receipts.stream().map(r -> r.getTotal()).sorted().forEach(s -> LOGGER.info("Sorted Receipts : " + s));
     }
 }
