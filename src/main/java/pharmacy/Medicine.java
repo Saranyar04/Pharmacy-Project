@@ -72,6 +72,10 @@ public class Medicine {
         this.price = price;
     }
 
+    public MedicineType getType() {
+        return type;
+    }
+
     @Override
     public String toString() {
         return "Medicine{" +

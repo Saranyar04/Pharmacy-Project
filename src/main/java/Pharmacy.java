@@ -14,6 +14,9 @@ import users.Person;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static enums.CompanyName.PNCPHARMACY;
+import static enums.MedicineType.OVER_THE_COUNTER;
+
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
@@ -67,10 +70,13 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
     public void printReceipts() {
         ListPrinter printer = new ListPrinter(receipts);
+        //receipts.stream().forEach(r -> r.getTotal()).(Comparator.comparing(Double :: )).get
+        LOGGER.info("Max Total " + receipts.stream().map(r -> r.getTotal()).max(Comparator.comparing(Float :: valueOf)).get());
     }
 
     public void printPrescriptionQueue() {
         prescriptionQueue.forEach( (n) -> LOGGER.info("Prescription List : " + n));
+        LOGGER.info("Total number of prescription : " + prescriptionQueue.stream().count());
     }
 
     public List<Receipt> getReceipts() {
@@ -86,9 +92,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void printPersonMap() {
-        for (Map.Entry<String, List<Person>> entry : personMap.entrySet()) {
-            LOGGER.info(entry.getKey() + ":" + entry.getValue());
-        }
+        personMap.forEach((k,v) -> LOGGER.info(k + v));
     }
 
     public void printInfo() {
@@ -101,5 +105,14 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         //To print the receipts of the given customer name using Predicates
         List<Receipt> customerReceipt = receipts.stream().filter(receipt -> receipt.getSaleCustomer().getLegalName() == name).collect(Collectors.toList());
         ListPrinter printer = new ListPrinter(customerReceipt);
+    }
+
+    public void getCompanyMedicineList() {
+        medicineList.stream().filter(med -> med.getCompany() == PNCPHARMACY).filter(med -> med.getType() == OVER_THE_COUNTER).forEach(med -> LOGGER.info(med));
+    }
+
+    public void getMedicineNames() {
+        List<String> medName = medicineList.stream().map(r -> r.getName()).collect(Collectors.toList());
+        medName.forEach(n -> LOGGER.info(n));
     }
 }
