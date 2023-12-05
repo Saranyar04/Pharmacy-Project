@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 import static enums.CompanyName.PNC_PHARMACY;
 import static enums.MedicineType.OVER_THE_COUNTER;
+import static util.Printer.print;
 
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
@@ -70,7 +71,7 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void printReceipts() {
-        new ListPrinter(receipts);
+        print(receipts);
         LOGGER.info("Max Total " + receipts.stream().map(r -> r.getTotal()).max(Comparator.comparing(Float :: valueOf)).get());
     }
 
@@ -98,9 +99,8 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
     }
 
     public void getCustomerReceipts(String name) {
-        //To print the receipts of the given customer name using Predicates
         List<Receipt> customerReceipt = receipts.stream().filter(receipt -> receipt.getSaleCustomer().getLegalName() == name).collect(Collectors.toList());
-        ListPrinter printer = new ListPrinter(customerReceipt);
+        print(customerReceipt);
     }
 
     public void printSaleEmployeeList() {

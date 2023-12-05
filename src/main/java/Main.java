@@ -26,6 +26,7 @@ import java.util.List;
 
 import static enums.InsuranceRate.NO_INSURANCE;
 import static enums.InsuranceRate.PLAN_A;
+import static util.Printer.print;
 
 public class Main {
 
@@ -87,7 +88,7 @@ public class Main {
                 pharmacy.calculateSale(employeeDelaina, lilyana, medicines);
                 pharmacy.printPersonMap();
                 pharmacy.printPrescriptionQueue();
-                LOGGER.info(doctor);
+                print(doctor);
                 pharmacy.printReceipts();
                 pharmacy.getCustomerReceipts("Lilly");
                 pharmacy.viewCompanyMedicineList();
