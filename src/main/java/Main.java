@@ -32,18 +32,18 @@ public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
-        Pharmacy pharmacy = new Pharmacy( );
-        pharmacy.printInfo( );
+        Pharmacy pharmacy = new Pharmacy();
+        pharmacy.printInfo();
 
         try {
             Class<?> pharmacy1 = Class.forName("Pharmacy");
-            Constructor<?>[] constructors = pharmacy1.getConstructors( );
+            Constructor<?>[] constructors = pharmacy1.getConstructors();
             LOGGER.info("Constructors : " + Arrays.toString(constructors));
 
-            Method[] methods = pharmacy1.getMethods( );
+            Method[] methods = pharmacy1.getMethods();
             LOGGER.info("Methods : " + Arrays.toString(methods));
 
-            Field[] declaredFields = pharmacy1.getDeclaredFields( );
+            Field[] declaredFields = pharmacy1.getDeclaredFields();
             LOGGER.info("Fields : " + Arrays.toString(declaredFields));
 
             try {
@@ -83,19 +83,19 @@ public class Main {
 
                 pharmacy.calculateSale(employee, lilly, medicines);
                 pharmacy.calculateSale(employee, lilyana, medicines);
-                pharmacy.printPersonMap( );
-                pharmacy.printPrescriptionQueue( );
+                pharmacy.printPersonMap();
+                pharmacy.printPrescriptionQueue();
                 LOGGER.info(doctor);
-                pharmacy.printReceipts( );
+                pharmacy.printReceipts();
                 pharmacy.getCustomerReceipts("Lilly");
-                pharmacy.getCompanyMedicineList( );
-                pharmacy.getMedicineNames( );
+                pharmacy.getCompanyMedicineList();
+                pharmacy.getMedicineNames();
             } catch (InvalidPriceException | InvalidMedicineListException |
                      InvalidLegalNameException | InvalidPhoneNoException |
                      NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
                 LOGGER.error(e);
 
-                UniqueWordReader uniqueWordReader = new UniqueWordReader( );
+                UniqueWordReader uniqueWordReader = new UniqueWordReader();
                 uniqueWordReader.countUniqueWords("pharmacy.txt");
             }
         } catch (ClassNotFoundException e) {
