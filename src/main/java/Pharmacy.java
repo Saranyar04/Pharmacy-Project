@@ -14,15 +14,13 @@ import users.Person;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static enums.CompanyName.PNCPHARMACY;
+import static enums.CompanyName.PNC_PHARMACY;
 import static enums.MedicineType.OVER_THE_COUNTER;
 
 final public class Pharmacy implements ISale, IPerson, IPharmacy {
 
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
     private static Map<String, List<Person>> personMap = new HashMap<>();
-    private static String pharmacyName;
-    private static TaxRate taxRate;
     private final List<Medicine> medicineList = new ArrayList<>();
     private List<Receipt> receipts = new ArrayList<>();
     private Queue<Prescription> prescriptionQueue = new LinkedList<>();
@@ -87,10 +85,6 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         this.receipts = receipts;
     }
 
-    public static String getPharmacyName() {
-        return pharmacyName;
-    }
-
     public void printPersonMap() {
         personMap.forEach((k,v) -> LOGGER.info(k + v));
     }
@@ -107,11 +101,11 @@ final public class Pharmacy implements ISale, IPerson, IPharmacy {
         ListPrinter printer = new ListPrinter(customerReceipt);
     }
 
-    public void getCompanyMedicineList() {
-        medicineList.stream().filter(med -> med.getCompany() == PNCPHARMACY).filter(med -> med.getType() == OVER_THE_COUNTER).forEach(med -> LOGGER.info(med));
+    public void viewCompanyMedicineList() {
+        medicineList.stream().filter(med -> med.getCompany() == PNC_PHARMACY).filter(med -> med.getType() == OVER_THE_COUNTER).forEach(med -> LOGGER.info(med));
     }
 
-    public void getMedicineNames() {
+    public void viewMedicineNames() {
         List<String> medName = medicineList.stream().map(r -> r.getName()).collect(Collectors.toList());
         medName.forEach(n -> LOGGER.info(n));
     }

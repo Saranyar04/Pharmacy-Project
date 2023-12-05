@@ -2,9 +2,9 @@ package enums;
 
 public enum CompanyName {
 
-    MDCLABORATORIES("MDC Laboratories"),
-    TILAB("TI Lab"),
-    PNCPHARMACY("PNC Pharmacy");
+    MDC_LABORATORIES("MDC Laboratories"),
+    TI_LAB("TI Lab"),
+    PNC_PHARMACY("PNC Pharmacy");
 
     private final String companyName;
 

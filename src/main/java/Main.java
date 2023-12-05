@@ -64,7 +64,7 @@ public class Main {
                 Customer lilyana = new Customer("Lilyana", "Female", new Date("04/11/2020"), "4132246155", "23 Riviera Dr, Main St, NewJersey", "lilly@gmail.com", PLAN_A, doctor);
                 addcustomer.invoke(new Pharmacy(), lilyana);
 
-                Medicine medicine = new Medicine("M453456", "Paracetamol", MedicineType.OVER_THE_COUNTER, CompanyName.PNCPHARMACY, "Pain reliever", 12.30);
+                Medicine medicine = new Medicine("M453456", "Paracetamol", MedicineType.OVER_THE_COUNTER, CompanyName.PNC_PHARMACY, "Pain reliever", 12.30);
                 Method addmedicine = pharmacy1.getDeclaredMethod("addMedicine", Medicine.class);
                 addmedicine.setAccessible(true);
                 addmedicine.invoke(new Pharmacy(), medicine);
@@ -73,8 +73,8 @@ public class Main {
                 customLinkedList.print( );
 
                 List<Medicine> medicines = new ArrayList<>( );
-                medicines.add(new Medicine("M34528", "Tylenol", MedicineType.PRESCRIPTION, CompanyName.MDCLABORATORIES, "Generic for age 13+", 23));
-                medicines.add(new Medicine("M34567", "Paracetamol", MedicineType.OVER_THE_COUNTER, CompanyName.TILAB, "for ages 15+", 13));
+                medicines.add(new Medicine("M34528", "Tylenol", MedicineType.PRESCRIPTION, CompanyName.MDC_LABORATORIES, "Generic for age 13+", 23));
+                medicines.add(new Medicine("M34567", "Paracetamol", MedicineType.OVER_THE_COUNTER, CompanyName.TI_LAB, "for ages 15+", 13));
 
                 Prescription lillyreceipt = new Prescription(34512, medicines, 2, "Morning and Night after food", doctor, lilly);
                 pharmacy.addPrescription(lillyreceipt);
@@ -88,19 +88,18 @@ public class Main {
                 LOGGER.info(doctor);
                 pharmacy.printReceipts();
                 pharmacy.getCustomerReceipts("Lilly");
-                pharmacy.getCompanyMedicineList();
-                pharmacy.getMedicineNames();
+                pharmacy.viewCompanyMedicineList();
+                pharmacy.viewMedicineNames();
             } catch (InvalidPriceException | InvalidMedicineListException |
                      InvalidLegalNameException | InvalidPhoneNoException |
                      NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
                 LOGGER.error(e);
-
-                UniqueWordReader uniqueWordReader = new UniqueWordReader();
-                uniqueWordReader.countUniqueWords("pharmacy.txt");
             }
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        UniqueWordReader uniqueWordReader = new UniqueWordReader();
+        uniqueWordReader.countUniqueWords("pharmacy.txt");
     }
 }
 
