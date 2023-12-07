@@ -10,6 +10,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pharmacy.Medicine;
 import pharmacy.Prescription;
+import threads.CustomThread;
+import threads.RunnableThread;
 import uniquewords.UniqueWordReader;
 import users.Customer;
 import users.Doctor;
@@ -35,6 +37,17 @@ public class Main {
     public static void main(String[] args) {
         Pharmacy pharmacy = new Pharmacy();
         pharmacy.printInfo();
+
+        RunnableThread runnableThread = new RunnableThread( );
+        //runnableThread.run( );
+        Thread thread1 = new Thread(runnableThread);
+        Thread thread2 = new Thread(runnableThread);
+        thread1.start();
+        thread2.start();
+        for(int i = 1; i <= 3; i++) {
+            CustomThread customThread = new CustomThread();
+            customThread.start();
+        }
 
         try {
             Class<?> pharmacy1 = Class.forName("Pharmacy");
