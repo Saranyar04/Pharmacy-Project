@@ -10,7 +10,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pharmacy.Medicine;
 import pharmacy.Prescription;
-import threads.*;
+import threads.CustomThread;
+import threads.RunnableThread;
+import threads.SumCallable;
 import uniquewords.UniqueWordReader;
 import users.Customer;
 import users.Doctor;
@@ -28,10 +30,10 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static enums.InsuranceRate.NO_INSURANCE;
 import static enums.InsuranceRate.PLAN_A;
-import static threads.BasicConnectionPool.INITIAL_POOL_SIZE;
 import static util.Printer.print;
 
 public class Main {
@@ -41,41 +43,58 @@ public class Main {
     public static void main(String[] args) {
         Pharmacy pharmacy = new Pharmacy( );
         pharmacy.printInfo( );
+        ReentrantLock firstLock = new ReentrantLock();
+        ReentrantLock secondLock = new ReentrantLock();
+        ReentrantLock thirdLock = new ReentrantLock();
 
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
-        for (int i = 1; i <= 7; i++) {
-            RunnableThread runnableThread = new RunnableThread("Worker Thread : " + i);
-            executorService.execute(runnableThread);
+        synchronized (firstLock) {
+            ExecutorService executer = Executors.newFixedThreadPool(5);
+            for (int i = 1; i <= 7; i++) {
+                Runnable runnable = new RunnableThread("Worker Thread : " + i);
+                executer.execute(runnable);
+            }
+            executer.shutdown( );
+            while (!executer.isTerminated()) {
+            }
         }
-        executorService.shutdown( );
-        while (!executorService.isTerminated( )) {
-        }
-        System.out.println("All requests completed successfully.");
+        LOGGER.info("Finished all threads");
 
-        ExecutorService executorService1 = Executors.newFixedThreadPool(5);
-        List<Future<Integer>> list = new ArrayList<>( );
-        for (int i = 0; i < 7; i++) {
-            Future<Integer> future = executorService1.submit(new SumCallable(i));
-            list.add(future);
-        }
-        for (Future i : list) {
-            try {
-                LOGGER.info(i.get( ));
-            } catch (InterruptedException | ExecutionException e) {
-                LOGGER.info(e);
+        synchronized (secondLock) {
+            ExecutorService executorService = Executors.newFixedThreadPool(5);
+            for (int i = 1; i <= 7; i++) {
+                RunnableThread runnableThread = new RunnableThread("Worker Thread : " + i);
+                executorService.execute(runnableThread);
             }
             executorService.shutdown( );
             while (!executorService.isTerminated( )) {
             }
         }
+        System.out.println("All requests completed successfully.");
+
+        synchronized (thirdLock) {
+            ExecutorService executorService1 = Executors.newFixedThreadPool(5);
+            List<Future<Integer>> list = new ArrayList<>( );
+            for (int i = 0; i < 7; i++) {
+                Future<Integer> future = executorService1.submit(new SumCallable(i));
+                list.add(future);
+            }
+            for (Future i : list) {
+                try {
+                    LOGGER.info(i.get( ));
+                } catch (InterruptedException | ExecutionException e) {
+                    LOGGER.info(e);
+                }
+                executorService1.shutdown( );
+                while (!executorService1.isTerminated( )) {
+                }
+            }
+        }
             System.out.println("All requests completed successfully.");
 
             for (int j = 1; j <= 3; j++) {
-                CustomThread customThread = new CustomThread( );
+                CustomThread customThread = new CustomThread();
                 customThread.start( );
             }
-            BasicConnectionPool basicConnectionPool = new BasicConnectionPool(INITIAL_POOL_SIZE);
-            basicConnectionPool.getConnection();
 
             try {
                 Class<?> pharmacy1 = Class.forName("Pharmacy");
