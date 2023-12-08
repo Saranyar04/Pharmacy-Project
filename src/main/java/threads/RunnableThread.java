@@ -6,6 +6,7 @@ import org.apache.logging.log4j.core.Logger;
 import java.lang.invoke.MethodHandles;
 
 public class RunnableThread implements Runnable{
+
     private static final Logger LOGGER = (Logger) LogManager.getLogger(MethodHandles.lookup().lookupClass());
     private String name;
 

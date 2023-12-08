@@ -44,8 +44,6 @@ public class Main {
         Pharmacy pharmacy = new Pharmacy( );
         pharmacy.printInfo( );
         ReentrantLock firstLock = new ReentrantLock();
-        ReentrantLock secondLock = new ReentrantLock();
-        ReentrantLock thirdLock = new ReentrantLock();
 
         synchronized (firstLock) {
             ExecutorService executer = Executors.newFixedThreadPool(5);
@@ -59,6 +57,7 @@ public class Main {
         }
         LOGGER.info("Finished all threads");
 
+        ReentrantLock secondLock = new ReentrantLock();
         synchronized (secondLock) {
             ExecutorService executorService = Executors.newFixedThreadPool(5);
             for (int i = 1; i <= 7; i++) {
@@ -71,6 +70,7 @@ public class Main {
         }
         System.out.println("All requests completed successfully.");
 
+        ReentrantLock thirdLock = new ReentrantLock();
         synchronized (thirdLock) {
             ExecutorService executorService1 = Executors.newFixedThreadPool(5);
             List<Future<Integer>> list = new ArrayList<>( );
