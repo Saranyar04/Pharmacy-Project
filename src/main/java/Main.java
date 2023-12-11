@@ -10,7 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pharmacy.Medicine;
 import pharmacy.Prescription;
-import threads.ConnectionPoolImplements;
+import threads.ConnectionPool;
 import threads.CustomThread;
 import threads.RunnableThread;
 import threads.SumCallable;
@@ -42,18 +42,18 @@ public class Main {
         Pharmacy pharmacy = new Pharmacy();
         pharmacy.printInfo();
 
-        ConnectionPoolImplements connectionPoolImplements = new ConnectionPoolImplements(5, 7);
+        ConnectionPool connectionPoolImplements = new ConnectionPool(5, 7);
         for (int i = 0; i < 7; i++) {
             int taskNo = i;
             try {
-                connectionPoolImplements.execute( () -> {
+                connectionPoolImplements.execute(() -> {
                     String message = Thread.currentThread().getName() + ": Task " + taskNo;
                     LOGGER.info(message);
-                    });
-                } catch (Exception e) {
-                    LOGGER.error(e);
-                }
+                });
+            } catch (Exception e) {
+                LOGGER.error(e);
             }
+        }
         connectionPoolImplements.waitUntilAllTasksFinished();
         connectionPoolImplements.stop();
         LOGGER.info("Finished all threads");
