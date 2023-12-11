@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pharmacy.Medicine;
 import pharmacy.Prescription;
+import threads.ConnectionPoolImplements;
 import threads.CustomThread;
 import threads.RunnableThread;
 import threads.SumCallable;
@@ -26,10 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 import static enums.InsuranceRate.NO_INSURANCE;
@@ -43,20 +41,22 @@ public class Main {
     public static void main(String[] args) {
         Pharmacy pharmacy = new Pharmacy();
         pharmacy.printInfo();
-        ReentrantLock firstLock = new ReentrantLock();
 
-        synchronized (firstLock) {
-            ExecutorService executer = Executors.newFixedThreadPool(5);
-            for (int i = 1; i <= 7; i++) {
-                Runnable runnable = new RunnableThread("Worker Thread : " + i);
-                executer.execute(runnable);
+        ConnectionPoolImplements connectionPoolImplements = new ConnectionPoolImplements(5, 7);
+        for (int i = 0; i < 7; i++) {
+            int taskNo = i;
+            try {
+                connectionPoolImplements.execute( () -> {
+                    String message = Thread.currentThread().getName() + ": Task " + taskNo;
+                    LOGGER.info(message);
+                    });
+                } catch (Exception e) {
+                    LOGGER.error(e);
+                }
             }
-            executer.shutdown();
-            while (!executer.isTerminated()) {
-            }
-        }
+        connectionPoolImplements.waitUntilAllTasksFinished();
+        connectionPoolImplements.stop();
         LOGGER.info("Finished all threads");
-
         ReentrantLock secondLock = new ReentrantLock();
         synchronized (secondLock) {
             ExecutorService executorService = Executors.newFixedThreadPool(5);
